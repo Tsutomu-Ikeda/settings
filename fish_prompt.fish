@@ -10,17 +10,16 @@ function fish_prompt --description 'Write out the prompt'
     echo -n '@'
 
     # Host
-    echo -n (prompt_hostname)
+    echo -n (prompt_hostname | string split '-')[1]
     set_color brmagenta
 
     echo -n ' '
 
     echo -n (fish -v | sed -e 's/, version /:/g')
 
-    echo -n ' '
-
     # PWD
     set_color yellow
+    echo -n ' '
     echo -n (dirs)
     set_color normal
 

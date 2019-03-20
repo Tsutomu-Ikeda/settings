@@ -1,0 +1,23 @@
+{
+    "plantuml.commandArgs": [
+        "-Xmx2g",
+        "-DPLANTUML_LIMIT_SIZE=16384"
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "emmet.variables": {
+        "lang": "ja"
+    },
+    "terminal.integrated.fontSize": 14,
+    "python.pythonPath": "python3",
+    "editor.fontFamily": "Ricty Diminished, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "editor.fontWeight": "100",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.formatting.provider": "autopep8",
+    "editor.formatOnSave": true,
+    "terminal.integrated.shell.osx": "/usr/local/bin/bash"
+}

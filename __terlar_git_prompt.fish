@@ -1,14 +1,14 @@
-set -g fish_color_git_clean green
-set -g fish_color_git_staged yellow
-set -g fish_color_git_dirty red
+set -g fish_color_git_clean brgreen
+set -g fish_color_git_staged bryellow
+set -g fish_color_git_dirty brred
 
-set -g fish_color_git_added green
-set -g fish_color_git_modified blue
-set -g fish_color_git_renamed magenta
-set -g fish_color_git_copied magenta
-set -g fish_color_git_deleted red
-set -g fish_color_git_untracked yellow
-set -g fish_color_git_unmerged red
+set -g fish_color_git_added brgreen
+set -g fish_color_git_modified brblue
+set -g fish_color_git_renamed brmagenta
+set -g fish_color_git_copied brmagenta
+set -g fish_color_git_deleted brred
+set -g fish_color_git_untracked bryellow
+set -g fish_color_git_unmerged brred
 
 set -g fish_prompt_git_status_added '+'
 set -g fish_prompt_git_status_modified '*'

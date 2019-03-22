@@ -5,7 +5,7 @@ function fish_prompt --description 'Write out the prompt'
     # User
     set_color brcyan
     echo -n (whoami)
-    set_color green
+    set_color brgreen
 
     echo -n '@'
 
@@ -18,7 +18,7 @@ function fish_prompt --description 'Write out the prompt'
     echo -n (fish -v | sed -e 's/, version /:/g')
 
     # PWD
-    set_color yellow
+    set_color bryellow
     echo -n ' '
     echo -n (dirs)
     set_color normal

@@ -78,7 +78,7 @@ function __terlar_git_prompt --description 'Write out the git prompt'
         set_color $fish_color_git_dirty
     end
 
-    echo -n $branch'⚡'
+    echo -n $branch'(alt)'
 
     for i in $fish_prompt_git_status_order
         if contains $i in $gs

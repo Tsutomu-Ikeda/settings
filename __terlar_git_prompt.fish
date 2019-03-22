@@ -1,3 +1,5 @@
+# /usr/local/Cellar/fish/3.0.2/share/fish/functions/__terlar_git_prompt
+
 set -g fish_color_git_clean brgreen
 set -g fish_color_git_staged bryellow
 set -g fish_color_git_dirty brred

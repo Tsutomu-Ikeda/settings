@@ -39,7 +39,7 @@ function __terlar_git_prompt --description 'Write out the git prompt'
 
     if test -z "$index"
         set_color $fish_color_git_clean
-        echo -n $branch'(ok)'
+        echo -n $branch'(synced)'
         set_color normal
         return
     end
@@ -78,7 +78,7 @@ function __terlar_git_prompt --description 'Write out the git prompt'
         set_color $fish_color_git_dirty
     end
 
-    echo -n $branch'(alt)'
+    echo -n $branch'(changed)'
 
     for i in $fish_prompt_git_status_order
         if contains $i in $gs

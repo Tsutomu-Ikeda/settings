@@ -86,7 +86,7 @@ function __terlar_git_prompt --description 'Write out the git prompt'
             set -l status_name fish_prompt_git_status_$i
 
             set_color $$color_name
-            echo -n $$status_name
+            echo -n ' '$$status_name
         end
     end
 

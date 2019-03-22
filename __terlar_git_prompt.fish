@@ -1,11 +1,11 @@
-# /usr/local/Cellar/fish/3.0.2/share/fish/functions/__terlar_git_prompt
+# /usr/local/Cellar/fish/3.0.2/share/fish/functions/__terlar_git_prompt.fish
 
 set -g fish_color_git_clean brgreen
 set -g fish_color_git_staged bryellow
 set -g fish_color_git_dirty brred
 
 set -g fish_color_git_added brgreen
-set -g fish_color_git_modified brblue
+set -g fish_color_git_modified brcyan
 set -g fish_color_git_renamed brmagenta
 set -g fish_color_git_copied brmagenta
 set -g fish_color_git_deleted brred

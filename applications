@@ -6,3 +6,5 @@ fish
 box
 NASにつなげる設定をしなければならない
 LUA4-U3-AGTのドライバ
+cd to(Finder上でTerminalを開くためのアプリ)
+bash5.0

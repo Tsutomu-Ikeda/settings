@@ -7,3 +7,5 @@ set -U FZF_LEGACY_KEYBINDINGS 0
 
 set -x PATH $HOME/.pyenv/bin $PATH
 . (pyenv init - | psub)
+
+set -x LSCOLORS xbfxcxdxbxegedabagacad

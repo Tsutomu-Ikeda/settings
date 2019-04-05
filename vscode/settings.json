@@ -19,5 +19,5 @@
     "python.linting.lintOnSave": true,
     "python.formatting.provider": "autopep8",
     "editor.formatOnSave": true,
-    "terminal.integrated.shell.osx": "/usr/local/bin/bash"
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish"
 }

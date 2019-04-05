@@ -33,8 +33,6 @@ function __terlar_git_prompt --description 'Write out the git prompt'
         return
     end
 
-    echo -n '| '
-
     set -l index (git status --porcelain 2>/dev/null|cut -c 1-2|sort -u)
 
     if test -z "$index"

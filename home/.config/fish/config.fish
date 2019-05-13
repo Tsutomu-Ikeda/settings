@@ -9,3 +9,11 @@ set -x PATH $HOME/.pyenv/bin $PATH
 . (pyenv init - | psub)
 
 set -x LSCOLORS xbfxcxdxbxegedabagacad
+
+set -x PGDATA /usr/local/var/postgresql@9.6
+set -g fish_user_paths "/usr/local/opt/postgresql@9.6/bin" $fish_user_paths
+
+set -g PATH "$HOME/.rbenv/bin:$PATH"
+. (rbenv init - | psub)
+
+set -x MPLBACKEND "module://itermplot"

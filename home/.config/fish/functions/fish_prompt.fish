@@ -1,6 +1,6 @@
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
-    
+
     # User
     set_color brcyan
     echo -n (whoami)
@@ -22,7 +22,7 @@ function fish_prompt --description 'Write out the prompt'
     echo -n (dirs)
     set_color normal
 
-    __terlar_git_prompt
+    __ikeda_terlar_git_prompt
     __fish_hg_prompt
     echo
 
@@ -32,6 +32,6 @@ function fish_prompt --description 'Write out the prompt'
 
     echo -n '$ '
     set_color normal
-    
+
     badge ""
 end

@@ -1,7 +1,6 @@
 function fish_prompt --description 'Write out the prompt'
 	set -l last_status $status
-
-    echo
+    
     # User
     set_color brcyan
     echo -n (whoami)
@@ -27,10 +26,12 @@ function fish_prompt --description 'Write out the prompt'
     __fish_hg_prompt
     echo
 
-    if not test $last_status -eq 0
-        set_color $fish_color_error
-    end
+    # if not test $last_status -eq 0
+    #     set_color $fish_color_error
+    # end
 
     echo -n '$ '
     set_color normal
+    
+    badge ""
 end

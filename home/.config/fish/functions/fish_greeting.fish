@@ -1,3 +1,4 @@
 function fish_greeting
-    fish_logo f00 '' ff0 l x
+    fish_logo brcyan brgreen bryellow l x
+    echo
 end

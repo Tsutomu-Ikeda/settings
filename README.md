@@ -1,2 +1,2 @@
-# Tsutomu-Ikeda/my_settings
+# Tsutomu-Ikeda/my-settings
 MacOS向けの設定ファイル一覧です。

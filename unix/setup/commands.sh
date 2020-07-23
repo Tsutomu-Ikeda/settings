@@ -86,6 +86,8 @@ _clean() {
     rm -rf $HOME/.vim/plugged
 }
 
+
+
 if [ "$1" = "list" ]; then
     _list
 elif [ "$1" = "check" ]; then

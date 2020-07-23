@@ -1,13 +1,13 @@
 .DEFAULT_GOAL := help
 
 list: ## Show dotfiles in this repo
-	@bash $(PWD)/init.sh list
+	@bash $(PWD)/commands.sh list
 
 install: ## Install dotfiles
-	@bash $(PWD)/init.sh install
+	@bash $(PWD)/commands.sh install
 
 clean: ## Remove dotfiles
-	@bash $(PWD)/init.sh clean
+	@bash $(PWD)/commands.sh clean
 
 reinstall: clean install ## Reinstall dotfiles Environment
 

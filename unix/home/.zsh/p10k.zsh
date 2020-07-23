@@ -2,11 +2,20 @@
 unset POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION
 
 # format
-typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE=' %k%F{033}%n@%m '
-typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE=' %k%F{033}* %n@%m '
+typeset -g POWERLEVEL9K_DIR{,_{SHORTENED,ANCHOR}}_FOREGROUND=011
+typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=011
+
+function prompt_shorter_context() {
+    p10k segment -f 014 -t "%n%F{010}@$(hostname | cut -d"-" -f2)"
+}
+
+function prompt_zsh_version() {
+    p10k segment -f 013 -t "zsh:$(zsh --version | cut -d" " -f2)"
+}
 
 typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-    context                 # user@hostname
+    shorter_context
+    zsh_version
     dir                     # current directory
     vcs                     # git status
     newline                 # \n

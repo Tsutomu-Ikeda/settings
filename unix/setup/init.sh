@@ -8,10 +8,11 @@ _WARN=$(printf "\e[1;33m!!\e[m")
 _ERROR=$(printf "\e[1;31m!!\e[m")
 
 WORK_DIR=`pwd | xargs dirname`
+SOURCE_DIR="$WORK_DIR/home"
 
 # Search - Find dotfiles & config
 _search() {
-    find "$WORK_DIR/home" -mindepth 1 -maxdepth 1 \
+    find $SOURCE_DIR -mindepth 1 -maxdepth 1 \
         -name '.*' \
         -and -not -name '.DS_Store' \
         -and -not -name '.git' \
@@ -20,14 +21,14 @@ _search() {
         -and -not -name '.config' \
         | sed -e 's/\.\///g'
 
-    find "$WORK_DIR/home/.config" -mindepth 1 -maxdepth 1 \
+    find "$SOURCE_DIR/.config" -mindepth 1 -maxdepth 1 \
         | sed -e 's/\.\///g'
 }
 
 # List - List of dotfiles
 _list() {
     for f in $(_search); do
-        echo "$WORK_DIR/home/$f ($HOME/$f)"
+        echo "$f ($HOME${f#$SOURCE_DIR})"
     done
 }
 
@@ -61,7 +62,7 @@ _install() {
     echo "$_TASK Extracting..."
     mkdir -p $HOME/.config
     for f in $(_search); do
-        ln -snfv $f $HOME/`basename $f`
+        ln -snfv $f $HOME${f#$SOURCE_DIR}
     done
     bash $WORK_DIR/setup/install.sh
 }
@@ -71,7 +72,7 @@ _clean() {
     set +e
     echo "$_TASK Removing dotfiles..."
     for f in $(_search); do
-        rm -rfv $HOME/$f
+        rm -rfv $HOME${f#$SOURCE_DIR}
     done
 
     echo "$_TASK Removing fzf"

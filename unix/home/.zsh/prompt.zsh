@@ -35,7 +35,7 @@ else
     echo ''
 fi)"
 
-PROMPT="${_bg_blk0}${_fg_wht0}  %n@%m  ${_bg_blk0h} ${_bg_blk1}${_fg_wht1}  %~  ${_vcs_format}${reset_color}"$'\n'
-PROMPT+="${_white_prompt} ❯ "
+PROMPT="${_bg_blk0}${_fg_wht0}  %n@%m %~  ${_vcs_format}${reset_color}"$'\n'
+PROMPT+="${_white_prompt} >"
 
 SPROMPT="%{$fg[white]%}%{$suggest%}(✿>╹‸╹%)? < にゃえ？もしかして %B%r%b %{$fg[white]%}のことかな? [そう!(y), 違う!(n),a,e]:${reset_color} "

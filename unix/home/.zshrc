@@ -59,19 +59,13 @@ DISABLE_AUTO_TITLE=false
 #----------------------
 bindkey -e
 bindkey "^?"    backward-delete-char
-bindkey "^H"    backward-delete-char
-bindkey "^[[3~" delete-char
-
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
-
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
+bindkey "^U"    backward-kill-line
 
 bindkey '^[[Z' reverse-menu-complete
 
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
+bindkey '^[[L' forward-word
 
 #----------------
 # Completion
@@ -84,6 +78,8 @@ setopt auto_menu
 setopt auto_param_keys
 setopt interactive_comments
 setopt magic_equal_subst
+setopt print_eight_bit
+setopt hist_reduce_blanks
 
 setopt complete_in_word
 setopt always_last_prompt
@@ -92,6 +88,7 @@ setopt nonomatch
 
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*' verbose yes
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} m:=_ m:=- m:=.'
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
 zstyle ':completion:*:options' description 'yes'

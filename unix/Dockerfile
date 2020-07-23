@@ -13,7 +13,9 @@ RUN apt-get update -qq && \
     useradd ${USERNAME} -m -u 1000 -G sudo -s /bin/zsh && \
     usermod -aG sudo ${USERNAME}
 
-COPY . /home/${USERNAME}/dotfiles
+COPY ./home /home/${USERNAME}/dotfiles
+COPY ./docker /home/${USERNAME}/dotfiles
+
 RUN chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/dotfiles
 
 USER ${USERNAME}

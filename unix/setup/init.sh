@@ -7,9 +7,11 @@ _TASK=$(printf "\e[1;34m::\e[m")
 _WARN=$(printf "\e[1;33m!!\e[m")
 _ERROR=$(printf "\e[1;31m!!\e[m")
 
+WORK_DIR=`pwd | xargs dirname`
+
 # Search - Find dotfiles & config
 _search() {
-    find . -mindepth 1 -maxdepth 1 \
+    find "$WORK_DIR/home" -mindepth 1 -maxdepth 1 \
         -name '.*' \
         -and -not -name '.DS_Store' \
         -and -not -name '.git' \
@@ -18,14 +20,14 @@ _search() {
         -and -not -name '.config' \
         | sed -e 's/\.\///g'
 
-    find .config/ -mindepth 1 -maxdepth 1 \
+    find "$WORK_DIR/home/.config" -mindepth 1 -maxdepth 1 \
         | sed -e 's/\.\///g'
 }
 
 # List - List of dotfiles
 _list() {
     for f in $(_search); do
-        echo "$PWD/$f ($HOME/$f)"
+        echo "$WORK_DIR/home/$f ($HOME/$f)"
     done
 }
 
@@ -59,9 +61,9 @@ _install() {
     echo "$_TASK Extracting..."
     mkdir -p $HOME/.config
     for f in $(_search); do
-        ln -snfv $PWD/$f $HOME/$f
+        ln -snfv $f $HOME/`basename $f`
     done
-    bash $PWD/setup/init.sh
+    bash $WORK_DIR/setup/install.sh
 }
 
 # Clean - Remove dotfiles

@@ -39,22 +39,6 @@ alias today='set TODAY_FILENAME (env LC_TIME="ja_JP.UTF-8" date "+%Y年%m月%d�
 # rm をゴミ箱に移動する動作に変更
 alias rm="rmtrash"
 
-alias aws='aws --endpoint-url=$AWS_ENDPOINT'
-set -x AWS_ENDPOINT "http://tom-nas:9000"
-set -x AWS_PROFILE "minio"
-
-function aws_sw
-    if test "$AWS_PROFILE" = "minio"
-        echo "AWS configure switched to default"
-        set --erase AWS_ENDPOINT
-        set --erase AWS_PROFILE
-    else
-        echo "AWS configure switched to minio"
-        export AWS_ENDPOINT="http://tom-nas:9000"
-        export AWS_PROFILE="minio"
-    end
-end
-
 set -x MPLBACKEND "module://itermplot"
 # 黒背景で良しなにプロットするためのオプション
 set -x ITERMPLOT "rv"

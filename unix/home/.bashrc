@@ -36,4 +36,3 @@ fi
 alias la='ls -lha'
 alias ll='ls -lha'
 alias shpwd='dirname $(cd $(dirname $0); pwd)'
-

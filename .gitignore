@@ -36,6 +36,8 @@ samples
 **/.vim/.netrwhist
 **/.vimrc_sample
 
+**/.ssh/
+
 .tmux/plugins/
 
 **/*_history

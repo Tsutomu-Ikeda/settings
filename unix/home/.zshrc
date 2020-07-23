@@ -40,9 +40,6 @@ source $HOME/.zsh/color.zsh
 source $HOME/.zsh/alias.zsh
 source $HOME/.zsh/util.zsh
 
-#source $HOME/.zsh/vcs.zsh
-#source $HOME/.zsh/prompt.zsh
-
 #-----------------------
 # Misc Settings
 #-----------------------
@@ -66,6 +63,9 @@ bindkey '^[[Z' reverse-menu-complete
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 bindkey '^[[L' forward-word
+
+bindkey '[C' forward-word
+bindkey '[D' backward-word
 
 #----------------
 # Completion
@@ -97,12 +97,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' use-cache false
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 source $HOME/.zsh/greeting.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#export POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh && source $HOME/.zsh/p10k.zsh

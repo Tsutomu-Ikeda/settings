@@ -1,11 +1,14 @@
 credentials.csv
 iterm2/com.googlecode.iterm2.plist
+
+**/.vscode/
+
 *.o
 \#*#
 *#
 .#*
 *~
-.DS_Store
+**/.DS_Store
 *.sw[po]
 tags
 TAGS
@@ -17,15 +20,15 @@ Session.vim
 *.aux
 *.elc
 
-.zsh_profile
-.zshrc.local
-.zsh/history/
+**/.zsh_profile
+**/.zshrc.local
+**/.zsh/history/
 *.zwc
 
 samples
-.config/nvim/autoload
-.config/nvim/plugged/
-.config/nvim/bundle/
+**/.config/nvim/autoload
+**/.config/nvim/plugged/
+**/.config/nvim/bundle/
 
 **/.vim/autoload/plug.vim
 **/.vim/plugged/
@@ -37,3 +40,5 @@ samples
 
 **/*_history
 **/fishd.*
+
+**/.mypy_cache/3.8

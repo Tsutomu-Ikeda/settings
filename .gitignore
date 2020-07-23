@@ -27,11 +27,11 @@ samples
 .config/nvim/plugged/
 .config/nvim/bundle/
 
-.vim/autoload/plug.vim
-.vim/plugged/
-.vim/bundle/
-.vim/.netrwhist
-.vimrc_sample
+**/.vim/autoload/plug.vim
+**/.vim/plugged/
+**/.vim/bundle/
+**/.vim/.netrwhist
+**/.vimrc_sample
 
 .tmux/plugins/
 

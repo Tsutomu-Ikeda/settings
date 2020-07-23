@@ -3,18 +3,24 @@
 # antigen
 source ~/.antigen/antigen.zsh
 
-# Load oh-my-zsh
-antigen use oh-my-zsh
+COUNT=0
 
-# Bundle from oh-my-zsh
-antigen bundle git
-antigen bundle docker
+OMZ=oh-my-zsh
+LIST=$(antigen list)
+echo $LIST | grep $OMZ > /dev/null; if [ $? -ne 0 ];
+then
+  antigen use $OMZ
+  # Bundle from oh-my-zsh
+  antigen bundle git
+  antigen bundle docker
+  (( COUNT++ ))
+fi
 
 # Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
+BUNDLES=("zsh-users/zsh-syntax-highlighting" "zsh-users/zsh-autosuggestions" "zsh-users/zsh-completions")
+for b in $BUNDLES; do echo $LIST | grep $b > /dev/null; if [ $? -ne 0 ]; then antigen bundle $b; (( COUNT++ )); fi; done
 
-antigen theme romkatv/powerlevel10k
+THEME=romkatv/powerlevel10k
+echo $LIST | grep $THEME > /dev/null; if [ $? -ne 0 ]; then antigen theme $THEME; (( COUNT++ )); fi
 
-antigen apply
+if [ $COUNT -gt 0 ]; then antigen apply; fi

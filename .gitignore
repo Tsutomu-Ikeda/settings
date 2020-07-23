@@ -38,7 +38,7 @@ samples
 
 **/.ssh/
 
-.tmux/plugins/
+**/.tmux/plugins/
 
 **/*_history
 **/fishd.*

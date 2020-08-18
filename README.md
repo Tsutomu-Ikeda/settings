@@ -19,3 +19,12 @@ git clone https://github.com/Tsutomu-Ikeda/settings
 cd settings/unix/setup
 make install
 ```
+
+### fishから移行する
+fish_historyからzsh_historyを生成するコマンドを用意しています。必要に応じて使ってください。
+**なお、zsh_historyは上書きされます。残しておきたい情報がある場合バックアップをとってから実行してください。**
+
+```bash
+cd unix/setup
+make migrate-from-fish
+```

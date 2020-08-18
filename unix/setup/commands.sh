@@ -43,7 +43,7 @@ _list() {
 _check() {
     echo "$_TASK Checking requirements..."
     REQUIRED=("curl" "git")
-    OPTIONAL=("tmux" "zsh" "vim" "nvim")
+    OPTIONAL=("tmux" "zsh" "vim")
 
     for v in ${REQUIRED[@]}; do
         if [ "$(which "$v" &> /dev/null; echo $?)" == 0 ]; then

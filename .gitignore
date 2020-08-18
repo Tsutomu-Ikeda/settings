@@ -26,9 +26,6 @@ Session.vim
 *.zwc
 
 samples
-**/.config/nvim/autoload
-**/.config/nvim/plugged/
-**/.config/nvim/bundle/
 
 **/.vim/autoload/plug.vim
 **/.vim/plugged/

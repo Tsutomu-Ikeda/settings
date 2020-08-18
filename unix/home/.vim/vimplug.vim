@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'git://git.wincent.com/command-t.git'
 
 "Plug 'Shougo/neocomplete'
 
@@ -20,9 +19,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'posva/vim-vue'
 
 Plug 'Chiel92/vim-autoformat'
-
-" Syntax Highlight
-Plug 'w0rp/ale'
 
 " Auto Fix Trailing White-Space
 Plug 'bronson/vim-trailing-whitespace'

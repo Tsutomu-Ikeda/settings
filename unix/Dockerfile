@@ -13,8 +13,8 @@ RUN apt-get update -qq && \
     useradd ${USERNAME} -m -u 1000 -G sudo -s /bin/zsh && \
     usermod -aG sudo ${USERNAME}
 
-COPY ./home /home/${USERNAME}/dotfiles/home
-COPY ./setup /home/${USERNAME}/dotfiles/setup
+COPY ./home/ /home/${USERNAME}/dotfiles/home/
+COPY ./setup/Makefile ./setup/commands.sh ./setup/install.sh /home/${USERNAME}/dotfiles/setup/
 
 RUN chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}/dotfiles
 
@@ -24,4 +24,5 @@ WORKDIR /home/${USERNAME}
 RUN cd /home/${USERNAME}/dotfiles/setup && \
     make install
 
+COPY ./setup/ /home/${USERNAME}/dotfiles/setup/
 CMD ["/bin/zsh"]

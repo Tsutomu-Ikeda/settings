@@ -10,6 +10,13 @@ _ERROR=$(printf "\e[1;31m!!\e[m")
 WORK_DIR=`pwd | xargs dirname`
 SOURCE_DIR="$WORK_DIR/home"
 
+_usage() {
+cat <<EOD
+Migrate Usage:
+-f | --from-fish: create ~/.zsh_history from ~/.local/share/fish/fish_history
+EOD
+}
+
 # Search - Find dotfiles & config
 _search() {
     find $SOURCE_DIR -mindepth 1 -maxdepth 1 \
@@ -86,6 +93,15 @@ _clean() {
     rm -rf $HOME/.vim/plugged
 }
 
+_migrate_from_fish() {
+    echo "migrate from fish"
+    if ! command -v python3 &> /dev/null
+    then
+        echo "You need Python3 runtime to execute this command. Install from https://www.python.org/."
+        exit
+    fi
+    python3 migrate.py
+}
 
 
 if [ "$1" = "list" ]; then
@@ -97,6 +113,24 @@ elif [ "$1" = "install" ]; then
     _install
 elif [ "$1" = "clean" ]; then
     _clean
+elif [ "$1" = "migrate" ]; then
+    shift
+    while [ $# -gt 0 ] ; do
+        case $1 in
+            -f | --from-fish)
+                echo "from fish!"; _migrate_from_fish
+                exit 0
+                ;;
+            -h | --help)
+                _usage
+                exit 0
+                ;;
+            *)
+                _usage
+                exit 1
+                ;;
+        esac
+    done
 else
     echo "Usage: <list|check|install|clean>"
 fi

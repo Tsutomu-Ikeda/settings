@@ -11,6 +11,9 @@ clean: ## Remove dotfiles
 
 reinstall: clean install ## Reinstall dotfiles Environment
 
+migrate-from-fish: ## Generate ~/.zsh_history from ~/.local/share/fish/fish_history
+	@bash $(PWD)/commands.sh migrate --from-fish
+
 help: ## Show help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| sort \

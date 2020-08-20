@@ -16,8 +16,7 @@ then
   (( COUNT++ ))
 fi
 
-# Syntax highlighting bundle.
-BUNDLES=("zsh-users/zsh-syntax-highlighting" "zsh-users/zsh-autosuggestions" "zsh-users/zsh-completions")
+BUNDLES=("zsh-users/zsh-syntax-highlighting" "zsh-users/zsh-autosuggestions" "zsh-users/zsh-completions" "zsh-users/zsh-history-substring-search")
 for b in $BUNDLES; do echo $LIST | grep $b > /dev/null; if [ $? -ne 0 ]; then antigen bundle $b; (( COUNT++ )); fi; done
 
 THEME=romkatv/powerlevel10k

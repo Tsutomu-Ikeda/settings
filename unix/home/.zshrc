@@ -60,8 +60,9 @@ bindkey "^U"    backward-kill-line
 
 bindkey '^[[Z' reverse-menu-complete
 
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 bindkey '^[[L' forward-word
 
 bindkey '[C' forward-word

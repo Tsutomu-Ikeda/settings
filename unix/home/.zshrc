@@ -60,8 +60,13 @@ bindkey "^U"    backward-kill-line
 
 bindkey '^[[Z' reverse-menu-complete
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+if [ "$OS" = "macos" ]; then
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+elif [ "$OS" = "linux" ]; then
+    bindkey "$key[Up]" history-substring-search-up
+    bindkey "$key[Down]" history-substring-search-down
+fi
 
 bindkey '^[[L' forward-word
 

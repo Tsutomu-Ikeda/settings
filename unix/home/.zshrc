@@ -80,6 +80,7 @@ setopt auto_param_keys
 setopt interactive_comments
 setopt magic_equal_subst
 setopt print_eight_bit
+setopt hist_ignore_space
 setopt hist_reduce_blanks
 
 setopt complete_in_word

@@ -98,7 +98,7 @@ _migrate_from_fish() {
     if ! command -v python3 &> /dev/null
     then
         echo "You need Python3 runtime to execute this command. Install from https://www.python.org/."
-        exit
+        exit 1
     fi
     python3 migrate.py
 }

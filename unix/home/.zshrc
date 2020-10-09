@@ -92,6 +92,9 @@ setopt always_last_prompt
 
 setopt nonomatch
 
+cdpath=($HOME $HOME/Documents $HOME/Documents/cl2 $HOME/Development)
+zstyle ':completion:*:cd:*' tag-order local-directories path-directories
+
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} m:=_ m:=- m:=.' 'r:|=*' 'l:|=* r:|=*'

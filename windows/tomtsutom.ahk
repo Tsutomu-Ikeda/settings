@@ -3,7 +3,9 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #HotkeyModifierTimeout 100
-    ; 別途Change KeyでCapsLockをF24キーに割り当てる
+
+; 別途Change KeyでCapsLockをF24キー(スキャンコード: 0x0076)に割り当てる
+; https://forest.watch.impress.co.jp/library/software/changekey/
     
 ; Emacsライクな部分
 F24 & a::Send, {Blind}{Home}

@@ -7,7 +7,7 @@ _TASK=$(printf "\e[1;34m::\e[m")
 _WARN=$(printf "\e[1;33m!!\e[m")
 _ERROR=$(printf "\e[1;31m!!\e[m")
 
-WORK_DIR=`pwd | xargs dirname`
+WORK_DIR=`pwd | xargs -0 dirname`
 SOURCE_DIR="$WORK_DIR/home"
 
 _usage() {
@@ -19,23 +19,27 @@ EOD
 
 # Search - Find dotfiles & config
 _search() {
-    find $SOURCE_DIR -mindepth 1 -maxdepth 1 \
+    find "$SOURCE_DIR" -mindepth 1 -maxdepth 1 \
         -name '.*' \
         -and -not -name '.DS_Store' \
         -and -not -name '.git' \
         -and -not -name '.gitmodules' \
         -and -not -name '.gitignore' \
         -and -not -name '.config' \
-        | sed -e 's/\.\///g'
+        | sed -e 's/\.\///g' \
+        | sed -e 's/ /[SPACE]/g'
+
 
     find "$SOURCE_DIR/.config" -mindepth 1 -maxdepth 1 \
-        | sed -e 's/\.\///g'
+        | sed -e 's/\.\///g' \
+        | sed -e 's/ /[SPACE]/g'
 }
 
 # List - List of dotfiles
 _list() {
     for f in $(_search); do
-        echo "$f ($HOME${f#$SOURCE_DIR})"
+        f_=${f//\[SPACE\]/ }
+        echo "${f//\[SPACE\]/ } ($HOME${f_#$SOURCE_DIR})"
     done
 }
 
@@ -67,11 +71,12 @@ _check() {
 # Install - Install dotfiles
 _install() {
     echo "$_TASK Extracting..."
-    mkdir -p $HOME/.config
+    mkdir -p "$HOME/.config"
     for f in $(_search); do
-        ln -snfv $f $HOME${f#$SOURCE_DIR}
+        f_=${f//\[SPACE\]/ }
+        ln -snfv "$f_" "$HOME${f_#$SOURCE_DIR}"
     done
-    bash $WORK_DIR/setup/install.sh
+    bash "$WORK_DIR/setup/install.sh"
 }
 
 # Clean - Remove dotfiles
@@ -79,18 +84,19 @@ _clean() {
     set +e
     echo "$_TASK Removing dotfiles..."
     for f in $(_search); do
-        rm -rfv $HOME${f#$SOURCE_DIR}
+        f_=${f//\[SPACE\]/ }
+        rm -rfv "$HOME${f_#$SOURCE_DIR}"
     done
 
     echo "$_TASK Removing fzf"
-    rm -rf $HOME/.fzf
+    rm -rf "$HOME/.fzf"
 
     echo "$_TASK Removing Antigen"
-    rm -rf $HOME/.antigen
+    rm -rf "$HOME/.antigen"
 
     echo "$_TASK Removing vim bundles..."
-    rm -rf $HOME/.vim/bundle
-    rm -rf $HOME/.vim/plugged
+    rm -rf "$HOME/.vim/bundle"
+    rm -rf "$HOME/.vim/plugged"
 }
 
 _migrate_from_fish() {

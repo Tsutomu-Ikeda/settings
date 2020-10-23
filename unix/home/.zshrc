@@ -19,7 +19,7 @@ autoload -Uz add-zsh-hook
 # Init Antigen
 source $HOME/.zsh/antigen.zsh
 
-if grep -iq microsoft /proc/version; then
+if [ -e /proc/version ] && grep -iq microsoft /proc/version; then
   OS="wsl"
 else
   OS="$($HOME/.misc/get-osdist.sh | sed -n 1P)"

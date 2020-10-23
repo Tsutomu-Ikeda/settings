@@ -1,12 +1,12 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 #HotkeyModifierTimeout 100
 
 ; 別途Change KeyでCapsLockをF24キー(スキャンコード: 0x0076)に割り当てる
 ; https://forest.watch.impress.co.jp/library/software/changekey/
-    
+
 ; Emacsライクな部分
 F24 & a::Send, {Blind}{Home}
 F24 & e::Send, {Blind}{End}
@@ -26,15 +26,14 @@ F24 & [::Send, {Blind}{Esc}
 
 IME_GetConverting(WinTitle="A", ConvCls="", CandCls="")
 {
-    
-    ;IME毎の 入力窓/候補窓Class一覧 ("|" 区切りで適当に足してけばOK)
+    ; IME毎の 入力窓/候補窓Class一覧 ("|" 区切りで適当に足してけばOK)
     ConvCls .= (ConvCls ? "|" : "")                 ;--- 入力窓 ---
     .  "ATOK\d+CompStr"                     ; ATOK系
     .  "|imejpstcnv\d+"                     ; MS-IME系
     .  "|WXGIMEConv"                        ; WXG
     .  "|SKKIME\d+\.*\d+UCompStr"           ; SKKIME Unicode
     .  "|MSCTFIME Composition"              ; Google日本語入力
-    
+
     CandCls .= (CandCls ? "|" : "")                 ;--- 候補窓 ---
     .  "ATOK\d+Cand"                        ; ATOK系
     .  "|imejpstCandList\d+|imejpstcand\d+" ; MS-IME 2002(8.1)XP付属
@@ -42,12 +41,12 @@ IME_GetConverting(WinTitle="A", ConvCls="", CandCls="")
     .  "|WXGIMECand"                        ; WXG
     .  "|SKKIME\d+\.*\d+UCand"              ; SKKIME Unicode
     CandGCls := "GoogleJapaneseInputCandidateWindow" ;Google日本語入力
-    
+
     VarSetCapacity(stGTI, 48, 0)
     NumPut(48, stGTI, 0, "UInt")   ;   DWORD   cbSize;
     hwndFocus := DllCall("GetGUIThreadInfo", Uint, 0, Uint, &stGTI)
     ? NumGet(stGTI, 12, "UInt") : WinExist(WinTitle)
-    
+
     WinGet, pid, PID, % "ahk_id " hwndFocus
     tmm:=A_TitleMatchMode
     SetTitleMatchMode, RegEx
@@ -69,7 +68,7 @@ IME_GET(WinTitle="A")
         hwnd := DllCall("GetGUIThreadInfo", Uint, 0, Uint, &stGTI)
         ? NumGet(stGTI, 8+PtrSize, "UInt") : hwnd
     }
-    
+
     return DllCall("SendMessage"
     , UInt, DllCall("imm32\ImmGetDefaultIMEWnd", Uint, hwnd)
     , UInt, 0x0283  ;Message : WM_IME_CONTROL
@@ -87,7 +86,7 @@ IME_SET(SetSts, WinTitle="A")
         hwnd := DllCall("GetGUIThreadInfo", Uint, 0, Uint, &stGTI)
         ? NumGet(stGTI, 8+PtrSize, "UInt") : hwnd
     }
-    
+
     return DllCall("SendMessage"
     , UInt, DllCall("imm32\ImmGetDefaultIMEWnd", Uint, hwnd)
     , UInt, 0x0283  ;Message : WM_IME_CONTROL

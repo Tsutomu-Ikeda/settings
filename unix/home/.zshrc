@@ -19,7 +19,11 @@ autoload -Uz add-zsh-hook
 # Init Antigen
 source $HOME/.zsh/antigen.zsh
 
-OS="$($HOME/.misc/get-osdist.sh | sed -n 1P)"
+if grep -iq microsoft /proc/version; then
+  OS="wsl"
+else
+  OS="$($HOME/.misc/get-osdist.sh | sed -n 1P)"
+fi
 PROFILE_DIR="$HOME/.zsh/profile/$OS.zsh"
 if [ -e $PROFILE_DIR ]; then
     source $PROFILE_DIR
@@ -95,7 +99,7 @@ setopt always_last_prompt
 
 setopt nonomatch
 
-cdpath=($HOME $HOME/Documents $HOME/Documents/cl2 $HOME/Development)
+cdpath=($HOME $HOME/Documents $HOME/Documents/cl2 $HOME/Development $cdpath)
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history

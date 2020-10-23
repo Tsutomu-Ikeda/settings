@@ -113,7 +113,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' use-cache false
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/mysql-client/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin:$PATH"
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 source $HOME/.zsh/greeting.zsh

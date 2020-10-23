@@ -70,6 +70,9 @@ bindkey '^[[L' forward-word
 bindkey '[C' forward-word
 bindkey '[D' backward-word
 
+unset LC_ALL
+export LC_ALL='ja_JP.UTF-8'
+
 #----------------
 # Completion
 #----------------

@@ -2,3 +2,4 @@ alias rebirth='echo Reincarnate zsh... ; rm -rfv ~/.antigen/ ; [ ! -d ~/.antigen
 alias nconsole='tmux new-s -s Console'
 alias restart=". ~/.zshrc"
 alias docker-compose-dev='docker-compose -f docker-compose.dev.yml'
+alias tree="tree -N"

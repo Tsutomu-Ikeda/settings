@@ -75,7 +75,7 @@ bindkey '[C' forward-word
 bindkey '[D' backward-word
 
 unset LC_ALL
-export LC_ALL='ja_JP.UTF-8'
+export LC_ALL='en_US.UTF-8'
 
 #----------------
 # Completion

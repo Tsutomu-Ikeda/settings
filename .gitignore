@@ -42,4 +42,6 @@ samples
 
 **/.mypy_cache/3.8
 
-update-notifier-npm.json
+**/configstore/*.json
+
+**/.zsh/completion/

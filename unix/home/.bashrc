@@ -17,9 +17,6 @@ PS1="$PS1"'\[\033[37m\]'       # change color(white)
 PS1="$PS1"'\n'                 # new line
 PS1="$PS1"'\$ '                # prompt: # or $
 
-# setting for grep
-export GREP_OPTIONS="--binary-files=without-match --color=auto"
-
 # setting for ls
 if [ "$(uname)" = 'Darwin' ]; then
     export LSCOLORS=xbfxcxdxbxegedabagacad
@@ -29,6 +26,7 @@ else
     alias ls='ls --color=auto -h'
 fi
 
+alias grep='grep --binary-files=without-match --color=auto'
 alias la='ls -lha'
 alias ll='ls -lha'
 alias shpwd='dirname $(cd $(dirname $0); pwd)'

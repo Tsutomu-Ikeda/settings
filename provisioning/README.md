@@ -1,6 +1,24 @@
 # 開発環境構築手順
 
 ## Mac
+
+### AppleIDの設定
+- `AppleID > iCloud > iCloud Drive (Options) > Desktop & Documents Folders` のチェックを外す
+
+### トラックパッドの設定
+- ポインターの速度を一番速くする
+- タップしてクリップを有効にする
+
+### Dockの設定
+- `Dock > Show recent applications in Dock` を無効化
+
+### 音の設定
+- `Sound > Play user interface sound effects` のチェックを外す
+
+### キーボードの設定
+- `Adjust keyboard brightness in low light` のチェックを外す
+- `Use F1, F2, etc. keys as standard function keys` のチェックをつける
+
 以下のコマンドはすべて `Terminal.app` を起動して実行します。
 
 - Command Line Tools for XCode のインストール
@@ -11,14 +29,20 @@
   ```bash
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   ```
-- Git/GitHubの設定
+- SSH(Git/GitHub)の設定
   - [GitHubへ公開鍵を設定](https://github.com/settings/keys)
     ```bash
     ssh-keygen
     cat ~/.ssh/id_rsa.pub | pbcopy
+    cat <<EOF >> ~/.ssh/config
+    Host *
+      UseKeyChain yes
+      AddKeysToAgent yes
+    EOF
     ```
-  - Gitのコミット情報の設定
+  - Gitの設定
     ```bash
+    git config pull.rebase false
     git config --global user.name "tomtsutom"
     git config --global user.email "tomtsutom0122@gmail.com"
     ```
@@ -28,6 +52,10 @@
     git clone git@github.com:Tsutomu-Ikeda/settings
     cd settings/unix/homebrew
     brew bundle
+    ```
+  - Google Chromeインストール
+    ```bash
+    brew cask install google-chrome
     ```
   - iTerm2のインストール
     ```bash
@@ -45,10 +73,12 @@
     ```bash
     brew cask install karabiner-elements
     ```
+    Catalina 以降の MacOSではKarabiner Elementsに `Full Disk Access` を与える必要があります。
 - シェル設定などの読み込み
   ```bash
   # git clone git@github.com:Tsutomu-Ikeda/settings
   cd settings/unix/setup
+  brew install coreutils  # glsを入れるため
   make install
   ```
 

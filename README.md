@@ -20,6 +20,20 @@ cd settings/unix/setup
 make install
 ```
 
+### こんな警告が出たら...
+
+![](assets/images/compaudit.png)
+
+compauditコマンドで警告が出ているファイル一覧を取得し、警告が出ているファイル全部に
+
+```bash
+chmod 755 `警告が出ているファイル`
+```
+
+というコマンドを実行すると、解決できます。
+
+参考: https://qiita.com/ayihis@github/items/88f627b2566d6341a741
+
 ### fishから移行する
 fish_historyからzsh_historyを生成するコマンドを用意しています。必要に応じて使ってください。
 **なお、zsh_historyは上書きされます。残しておきたい情報がある場合バックアップをとってから実行してください。**

@@ -17,3 +17,11 @@ bind "^U" vi-kill-line-prev
 bind "^W" ed-delete-prev-word
 bind "^X" ed-sequence-lead-in
 bind "^Y" em-yank
+
+bind "\e[1;5C" em-next-word
+bind "\e[5C" em-next-word
+bind "\e\e[C" em-next-word
+
+bind "\e[1;5D" ed-prev-word
+bind "\e[5D" ed-prev-word
+bind "\e\e[D" ed-prev-word

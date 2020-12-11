@@ -2,7 +2,7 @@ alias ls='gls --color'
 alias ll='gls -lh --color'
 alias la='gls -lah --color'
 
-alias rm="rmtrash"
+alias rm="trash"
 
 export PATH="/usr/local/sbin:$PATH"
 

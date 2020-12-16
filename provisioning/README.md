@@ -74,6 +74,13 @@
     brew cask install karabiner-elements
     ```
     Catalina 以降の MacOSではKarabiner Elementsに `Full Disk Access` を与える必要があります。
+- pyenvの設定
+  ```bash
+  export CFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include"
+  export LDFLAGS="-L$(brew --prefix zlib)/lib -L$(brew --prefix openssl)/lib"
+  pyenv install 3.8.6
+  pyenv global 3.8.6
+  ```
 - シェル設定などの読み込み
   ```bash
   # git clone git@github.com:Tsutomu-Ikeda/settings

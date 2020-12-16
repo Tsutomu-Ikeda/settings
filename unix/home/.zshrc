@@ -73,6 +73,12 @@ bindkey '^[[L' forward-word
 
 bindkey '[C' forward-word
 bindkey '[D' backward-word
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\e[5C" forward-word
+bindkey "\e[5D" backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
 
 unset LC_ALL
 export LC_ALL='en_US.UTF-8'

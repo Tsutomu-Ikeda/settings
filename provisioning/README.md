@@ -88,6 +88,12 @@
   brew install coreutils  # glsを入れるため
   make install
   ```
+- スクショの設定
+  ```bash
+  defaults write com.apple.screencapture disable-shadow -boolean true  # ウィンドウを撮影したときの余白を削除
+  defaults write com.apple.screencapture target clipboard  # 保存先をクリップボードにする
+  killall SystemUIServer
+  ```
 
 ## Windows
 - WSL(Ubuntu)のセットアップ

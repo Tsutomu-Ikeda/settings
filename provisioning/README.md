@@ -44,7 +44,7 @@
     ```bash
     git config pull.rebase false
     git config --global user.name "tomtsutom"
-    git config --global user.email "tomtsutom0122@gmail.com"
+    git config --global user.email "40418321+Tsutomu-Ikeda@users.noreply.github.com"
     ```
 - 必要なアプリケーションのインストール
   - 以下の項目を一括でインストールする場合

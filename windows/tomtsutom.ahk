@@ -11,6 +11,7 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 F24 & a::Send, {Blind}{Home}
 F24 & e::Send, {Blind}{End}
 F24 & u::Send, +{Home}^x
+F24 & w::Send, {Blind}^{BS}
 F24 & y::Send, ^v
 
 ; Vimライクな部分

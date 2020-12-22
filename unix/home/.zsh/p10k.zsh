@@ -6,7 +6,7 @@ typeset -g POWERLEVEL9K_DIR{,_{SHORTENED,ANCHOR}}_FOREGROUND=011
 typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=011
 
 function prompt_shorter_context() {
-    p10k segment -f 014 -t "%n%F{010}@$(hostname | cut -d"-" -f2)"
+    p10k segment -f 014 -t "%n%F{010}@$(hostname | sed 's/.local$//g')"
 }
 
 function prompt_zsh_version() {

@@ -8,10 +8,6 @@ fi
 #--------------------------
 # zsh Configuration
 #--------------------------
-## Autoload
-autoload -U colors; colors
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
 
 #---------------------
 # Import settings

@@ -4,11 +4,14 @@ alias la='gls -lah --color'
 
 alias rm="trash"
 
-export PATH="/usr/local/sbin:$PATH"
-
-export PATH="$HOME/.pyenv/bin:$PATH"
+path=(
+  /opt/homebrew/bin(N-/)
+  /usr/local/sbin(N-/)
+  $HOME/.pyenv/bin(N-/)
+  $path
+)
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-alias brew="env PATH=${PATH/$HOME\/\.pyenv\/shims:/} brew"
+alias brew="arch -arch x86_64 env PATH=${PATH/$HOME\/\.pyenv\/shims:/} /usr/local/bin/brew"

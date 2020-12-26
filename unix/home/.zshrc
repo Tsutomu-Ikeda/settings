@@ -29,10 +29,14 @@ if [ -e $HOME/.zsh_profile ]; then
     source $HOME/.zsh_profile
 fi
 
-# PATH
-if [ -e $HOME/bin ]; then
-    export PATH=$HOME/bin:$PATH
-fi
+path=(
+  $HOME/bin(N-/)
+  /usr/local/opt/mysql-client/bin(N-/)
+  $HOME/.yarn/bin(N-/)
+  $HOME/.config/yarn/global/node_modules/.bin(N-/)
+  $HOME/.cargo/bin(N-/)
+  $path
+)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -101,7 +105,13 @@ setopt always_last_prompt
 
 setopt nonomatch
 
-cdpath=($HOME $HOME/Documents $HOME/Documents/cl2 $HOME/Development $cdpath)
+cdpath=(
+  $HOME(N-/)
+  $HOME/Documents(N-/)
+  $HOME/Documents/cl2(N-/)
+  $HOME/Development(N-/)
+  $cdpath
+)
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
@@ -115,7 +125,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' use-cache false
 
-export PATH="/usr/local/opt/mysql-client/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.cargo/bin:$PATH"
 export WORDCHARS="*?_-.[]~=&;!#$%^(){}<>"
 
 source $HOME/.zsh/greeting.zsh

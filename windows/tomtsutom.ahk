@@ -7,12 +7,34 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 ; 別途Change KeyでCapsLockをF24キー(スキャンコード: 0x0076)に割り当てる
 ; https://forest.watch.impress.co.jp/library/software/changekey/
 
+GroupAdd Dev, ahk_class CASCADIA_HOSTING_WINDOW_CLASS ; Windows Terminal
+GroupAdd Dev, ahk_exe Code.exe ; Visual Studio Code
+
 ; Emacsライクな部分
-F24 & a::Send, {Blind}{Home}
-F24 & e::Send, {Blind}{End}
-F24 & u::Send, +{Home}^x
-F24 & w::Send, {Blind}^{BS}
-F24 & y::Send, ^v
+F24 & a::
+    IfWinActive ahk_class CASCADIA_HOSTING_WINDOW_CLASS
+        Send, ^a
+    Else
+        Send, {Blind}{Home}
+    Return
+F24 & u::
+    IfWinActive ahk_group Dev
+        Send, ^u
+    Else
+        Send, +{Home}{Delete}
+    Return
+F24 & w::
+    IfWinActive ahk_group Dev
+        Send, ^w
+    Else
+        Send, {Blind}^{BS}
+    Return
+F24 & e::
+    IfWinActive ahk_class CASCADIA_HOSTING_WINDOW_CLASS
+        Send, ^e
+    Else
+        Send, {Blind}{End}
+    Return
 
 ; Vimライクな部分
 F24 & h::Send, {Blind}{Left}
@@ -24,6 +46,26 @@ F24 & l::Send, {Blind}{Right}
 F24 & `;::Send, {Blind}{Enter}
 F24 & /::Send, {Blind}{BS}
 F24 & [::Send, {Blind}{Esc}
+
+; その他のキー
+F24 & b::Send, ^b
+F24 & c::Send, ^c
+F24 & d::Send, ^d
+F24 & f::Send, ^f
+F24 & g::Send, ^g
+F24 & i::Send, ^i
+F24 & m::Send, ^m
+F24 & n::Send, ^n
+F24 & o::Send, ^o
+F24 & p::Send, ^p
+F24 & q::Send, ^q
+F24 & r::Send, ^r
+F24 & s::Send, ^s
+F24 & t::Send, ^t
+F24 & v::Send, ^v
+F24 & x::Send, ^x
+F24 & y::Send, ^y
+F24 & z::Send, ^z
 
 IME_GetConverting(WinTitle="A", ConvCls="", CandCls="")
 {

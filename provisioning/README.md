@@ -18,6 +18,7 @@
 ### キーボードの設定
 - `Adjust keyboard brightness in low light` のチェックを外す
 - `Use F1, F2, etc. keys as standard function keys` のチェックをつける
+- `keyboard > Text > Add period with double space` のチェックを外す
 
 以下のコマンドはすべて `Terminal.app` を起動して実行します。
 
@@ -88,9 +89,14 @@
   brew install coreutils  # glsを入れるため
   make install
   ```
+- Ricty Diminishedの設定
+  - バックスラッシュがうまく表示されない問題
+  - なぜRicty Diminishedを使うか
+    - 全角スペースと半角スペースの区別がつく
 - スクショの設定
   ```bash
   defaults write com.apple.screencapture disable-shadow -boolean true  # ウィンドウを撮影したときの余白を削除
+  defaults write com.apple.screencapture type jpg  # JPEG形式にする
   defaults write com.apple.screencapture target clipboard  # 保存先をクリップボードにする
   killall SystemUIServer
   ```

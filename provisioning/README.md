@@ -56,23 +56,23 @@
     ```
   - Google Chromeインストール
     ```bash
-    brew cask install google-chrome
+    brew install google-chrome
     ```
   - iTerm2のインストール
     ```bash
-    brew cask install iterm2
+    brew install iterm2
     ```
   - Visual Studio Codeのインストール
     ```bash
-    brew cask install visual-studio-code
+    brew install visual-studio-code
     ```
   - Dockerのインストール
     ```bash
-    brew cask install docker
+    brew install --cask docker
     ```
   - キーバインドの変更
     ```bash
-    brew cask install karabiner-elements
+    brew install karabiner-elements
     ```
     Catalina 以降の MacOSではKarabiner Elementsに `Full Disk Access` を与える必要があります。
 - pyenvの設定

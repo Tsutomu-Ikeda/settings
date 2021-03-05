@@ -4,7 +4,6 @@ alias restart=". ~/.zshrc"
 alias docker-compose-dev='docker-compose -f docker-compose.dev.yml'
 alias tree="tree -N"
 alias less="less -R"
-alias codei='code-insiders'
 
 function cd {
   builtin cd "$@"

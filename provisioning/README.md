@@ -75,12 +75,12 @@
     brew install karabiner-elements
     ```
     Catalina 以降の MacOSではKarabiner Elementsに `Full Disk Access` を与える必要があります。
-- pyenvの設定
+- pyenvでPythonインタプリタをインストールする
   ```bash
-  export CFLAGS="-I$(=brew --prefix zlib)/include -I$(=brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include -I/opt/homebrew/opt/bzip2/include"
-  export LDFLAGS="-L$(=brew --prefix zlib)/lib -L$(=brew --prefix openssl)/lib -L/opt/homebrew/opt/bzip2/lib"
-  pyenv install 3.8.6
-  pyenv global 3.8.6
+  export CFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include"
+  export LDFLAGS="-L$(brew --prefix zlib)/lib -L$(brew --prefix openssl)/lib -L$(brew --prefix bzip2)/lib -L$(brew --prefix readline)/lib"
+  arch -arch x86_64 env PATH=${PATH/\/opt\/homebrew\/bin:/} pyenv install 3.8.7
+  pyenv global 3.8.7
   ```
 - シェル設定などの読み込み
   ```bash

@@ -31,10 +31,6 @@ fi
 
 path=(
   $HOME/bin(N-/)
-  /usr/local/opt/mysql-client/bin(N-/)
-  /opt/homebrew/opt/mysql-client/bin(N-/)
-  /usr/local/opt/libpq/bin(N-/)
-  /opt/homebrew/opt/libpq/bin(N-/)
   $HOME/.yarn/bin(N-/)
   $HOME/.config/yarn/global/node_modules/.bin(N-/)
   $HOME/.cargo/bin(N-/)

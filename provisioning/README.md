@@ -43,7 +43,7 @@
     ```
   - Gitの設定
     ```bash
-    git config pull.rebase false
+    git config --global pull.rebase false
     git config --global user.name "tomtsutom"
     git config --global user.email "40418321+Tsutomu-Ikeda@users.noreply.github.com"
     ```

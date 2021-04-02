@@ -30,6 +30,13 @@ compauditコマンドで警告が出ているファイル一覧を取得し、�
 chmod 755 `警告が出ているファイル`
 ```
 
+例)
+
+```bash
+chmod 755 /usr/local/share/zsh
+chmod 755 /usr/local/share/zsh/site-functions
+```
+
 というコマンドを実行すると、解決できます。
 
 参考: https://qiita.com/ayihis@github/items/88f627b2566d6341a741

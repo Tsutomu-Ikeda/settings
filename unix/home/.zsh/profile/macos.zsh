@@ -13,10 +13,16 @@ path=(
   /usr/local/opt/mysql-client/bin(N-/)
   /usr/local/opt/libpq/bin(N-/)
   $HOME/.pyenv/bin(N-/)
+  $HOME/.rbenv/bin(N-/)
   $path
 )
+
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
+fi
+
+if command -v rbenv 1>/dev/null 2>&1; then
+  eval "$(rbenv init -)"
 fi
 
 alias brew="arch -arch x86_64 env PATH=${${PATH/$HOME\/\.pyenv\/shims:/}/\/opt\/homebrew\/bin:/} /usr/local/bin/brew"

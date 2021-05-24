@@ -12,7 +12,7 @@ path=(
   /usr/local/sbin(N-/)
   /usr/local/opt/mysql-client/bin(N-/)
   /usr/local/opt/libpq/bin(N-/)
-  $HOME/.pyenv/bin(N-/)
+  $HOME/.pyenv/shims(N-/)
   $HOME/.rbenv/bin(N-/)
   $path
 )

@@ -2,26 +2,6 @@
 
 ## Mac
 
-### AppleIDの設定
-- `AppleID > iCloud > iCloud Drive (Options) > Desktop & Documents Folders` のチェックを外す
-
-### トラックパッドの設定
-- ポインターの速度を一番速くする
-- タップしてクリップを有効にする
-
-### Dockの設定
-- `Dock > Show recent applications in Dock` を無効化
-
-### 音の設定
-- `Sound > Play user interface sound effects` のチェックを外す
-
-### キーボードの設定
-- `Adjust keyboard brightness in low light` のチェックを外す
-- `Use F1, F2, etc. keys as standard function keys` のチェックをつける
-- `keyboard > Text > Add period with double space` のチェックを外す
-
-以下のコマンドはすべて `Terminal.app` を起動して実行します。
-
 - Command Line Tools for XCode のインストール
   ```bash
   xcode-select --install
@@ -93,15 +73,79 @@
   - バックスラッシュがうまく表示されない問題
   - なぜRicty Diminishedを使うか
     - 全角スペースと半角スペースの区別がつく
-- スクショの設定
-  ```bash
-  defaults write com.apple.screencapture disable-shadow -boolean true  # ウィンドウを撮影したときの余白を削除
-  defaults write com.apple.screencapture type jpg  # JPEG形式にする
-  defaults write com.apple.screencapture target clipboard  # 保存先をクリップボードにする
-  killall SystemUIServer
-  ```
+
+### AppleIDの設定
+
+- `AppleID > iCloud > iCloud Drive (Options) > Desktop & Documents Folders` のチェックを外す
+
+```
+defaults write com.apple.finder FXICloudDriveDesktop -bool false
+defaults write com.apple.finder FXICloudDriveDocuments -bool false
+defaults write com.apple.finder FXICloudDriveEnabled -bool false
+```
+
+### トラックパッドの設定
+
+- ポインターの速度を一番速くする
+- タップしてクリップを有効にする
+
+```
+defaults write -g com.apple.trackpad.scaling -int 3
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write -g com.apple.mouse.tapBehavior -bool true
+```
+
+### Dockの設定
+
+- `Dock > Show recent applications in Dock` を無効化
+- 初期設定でDockに設定されているアプリを消して、スッキリさせる
+
+```
+defaults write com.apple.dock show-recents -int 0
+function __dock_item() {
+ printf '%s%s%s%s%s' '<dict><key>tile-data</key><dict><key>file-data</key><dict>' '<key>_CFURLString</key><string>' "$1" '</string><key>_CFURLStringType</key><integer>0</integer>' '</dict></dict></dict>'
+}
+defaults write com.apple.dock persistent-apps -array "$(__dock_item /Applications/Google\ Chrome.app/)" \
+"$(__dock_item /Applications/Slack.app/)" \
+"$(__dock_item /Applications/Visual\ Studio\ Code.app/)" \
+"$(__dock_item /Applications/iTerm.app/)" \
+"$(__dock_item /System/Applications/System\ Preferences.app/)"
+```
+
+### 音の設定
+
+- `Sound > Play user interface sound effects` のチェックを外す
+
+```
+defaults write -g com.apple.sound.uiaudio.enabled -int 0
+```
+
+### キーボードの設定
+
+- `Adjust keyboard brightness in low light` のチェックを外す
+- `Use F1, F2, etc. keys as standard function keys` のチェックをつける
+- `keyboard > Text > Add period with double space` のチェックを外す
+- `keyboard > Text > Capitalize words automatically` のチェックを外す
+
+```
+sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Automatic Keyboard Enabled" -int 0
+defaults write -g com.apple.keyboard.fnState -int 1
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -int 0
+defaults write -g NSAutomaticCapitalizationEnabled -int 0
+```
+
+### スクショの設定
+
+```bash
+defaults write com.apple.screencapture disable-shadow -boolean true  # ウィンドウを撮影したときの余白を削除
+defaults write com.apple.screencapture type jpg  # JPEG形式にする
+defaults write com.apple.screencapture target clipboard  # 保存先をクリップボードにする
+killall SystemUIServer
+```
 
 ## Windows
+
 - WSL(Ubuntu)のセットアップ
   - Git/GitHubの設定
     - [GitHubへ公開鍵を設定](https://github.com/settings/keys)

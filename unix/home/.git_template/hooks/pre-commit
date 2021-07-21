@@ -1,0 +1,13 @@
+#!/bin/bash
+
+prohibited_branches=('develop' 'master')
+if printf '%s\n' "${prohibited_branches[@]}" | grep -qx "$(git symbolic-ref HEAD | sed -e 's:^refs/heads/::')" > /dev/null >&2; then
+  echo "You can't commit to master/develop directly"
+  exit 1
+fi
+
+if ! git diff --diff-filter=ACMR --name-only --cached | grep -E '.*\.(rb|jbuilder)' | xargs rubocop > /dev/null 2>&1; then
+  echo "There's some offences in code. Please fix them."
+  git diff --diff-filter=ACMR --name-only --cached | grep -E '.*\.(rb|jbuilder)' | xargs rubocop
+  exit 1
+fi

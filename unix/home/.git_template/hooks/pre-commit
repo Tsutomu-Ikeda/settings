@@ -6,8 +6,21 @@ if printf '%s\n' "${prohibited_branches[@]}" | grep -qx "$(git symbolic-ref HEAD
   exit 1
 fi
 
-if ! git diff --diff-filter=ACMR --name-only --cached | grep -E '.*\.(rb|jbuilder)' | xargs rubocop > /dev/null 2>&1; then
+rubocop_target_rule='^(?!(db/schema.rb|db/migrate/|config/routes.rb)).*\.(rb|jbuilder)$'
+
+target_files=$(git diff --diff-filter=ACMR --name-only --cached | ggrep -P $rubocop_target_rule)
+
+for i in $target_files; do
+  mkdir -p "$(dirname "./.git/tmp/$i")"
+  git show ":$i" > ./.git/tmp/$i
+done
+
+rubocop_result=$(rubocop --color $(find ./.git/tmp -type f))
+rubocop_status=$?
+rm -rf ./.git/tmp
+
+if [ $rubocop_status -ne 0 ]; then
   echo "There's some offences in code. Please fix them."
-  git diff --diff-filter=ACMR --name-only --cached | grep -E '.*\.(rb|jbuilder)' | xargs rubocop
+  echo -e "$rubocop_result" | gsed -e 's:.git/tmp/::g'
   exit 1
 fi

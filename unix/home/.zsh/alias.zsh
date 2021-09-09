@@ -27,6 +27,7 @@ function bd {
     builtin cd "$DIR"
   else
     echo "empty \$BACK_HISTORY"
+    return 1
   fi
 }
 
@@ -39,5 +40,6 @@ function fd {
     builtin cd "$DIR"
   else
     echo "empty \$FORWARD_HISTORY"
+    return 1
   fi
 }

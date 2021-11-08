@@ -88,18 +88,21 @@ defaults write com.apple.finder FXICloudDriveEnabled -bool false
 
 - ポインターの速度を一番速くする
 - タップしてクリップを有効にする
+- 調べる＆データ検出を無効にする
 
 ```
 defaults write -g com.apple.trackpad.scaling -int 3
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write -g com.apple.mouse.tapBehavior -bool true
+defaults write -g com.apple.trackpad.forceClick -bool false
 ```
 
 ### Dockの設定
 
 - `Dock > Show recent applications in Dock` を無効化
 - 初期設定でDockに設定されているアプリを消して、スッキリさせる
+- 最新の使用状況に基づいて操作スペースを自動的に並び替えるを無効化
 
 ```
 defaults write com.apple.dock show-recents -int 0
@@ -111,6 +114,8 @@ defaults write com.apple.dock persistent-apps -array "$(__dock_item /Application
 "$(__dock_item /Applications/Visual\ Studio\ Code.app/)" \
 "$(__dock_item /Applications/iTerm.app/)" \
 "$(__dock_item /System/Applications/System\ Preferences.app/)"
+defaults write com.apple.dock mru-spaces -bool false
+killall Dock
 ```
 
 ### 音の設定

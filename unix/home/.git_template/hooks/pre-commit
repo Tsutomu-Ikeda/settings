@@ -1,6 +1,6 @@
 #!/bin/bash
 
-prohibited_branches=('develop' 'master')
+prohibited_branches=('develop' 'master' 'main')
 if printf '%s\n' "${prohibited_branches[@]}" | grep -qx "$(git symbolic-ref HEAD | sed -e 's:^refs/heads/::')" > /dev/null >&2; then
   echo "You can't commit to master/develop directly"
   exit 1
@@ -10,13 +10,27 @@ rubocop_target_rule='^(?!(db/schema.*\.rb|db/migrate/|config/routes\.rb)).*\.(rb
 
 target_files=$(git diff --diff-filter=ACMR --name-only --cached | ggrep -P $rubocop_target_rule)
 
-for i in $target_files; do
-  mkdir -p "$(dirname "./.git/tmp/$i")"
-  cp $i ./.git/tmp/$i
-  git show ":$i" > $i
+# 全角スペース「　」や特殊文字をコミットしないようにする
+for i in $(git diff --diff-filter=ACMR --name-only --cached); do
+  # バイナリファイルはスキップする
+  if [ $(git show ":$i" | file  -b --mime-type - | gsed 's|/.*||') != 'text' ]; then
+    continue
+  fi
+
+  if git show ":$i" | ggrep -q -E "[　	]"; then
+    echo "There's some invalid charactors in $i. Please fix them."
+    exit 1
+  fi
 done
 
+# Rubocopに引っかかるファイルをコミットしないようにする
 if [ -n "$target_files" ]; then
+  for i in $target_files; do
+    mkdir -p "$(dirname "./.git/tmp/$i")"
+    cp $i ./.git/tmp/$i
+    git show ":$i" > $i
+  done
+
   rubocop_result=$(bundle exec rubocop --color $target_files)
   rubocop_status=$?
 

@@ -94,6 +94,7 @@ setopt auto_param_keys
 setopt interactive_comments
 setopt magic_equal_subst
 setopt print_eight_bit
+setopt extended_history
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_ignore_dups

@@ -2,6 +2,7 @@
 *hoge*
 *fuga*
 *secret*
+*.log
 
 vendor/bundle
 .bundle/config
@@ -11,6 +12,7 @@ db/structure.sql
 .vscode
 Procfile
 
+node_modules
 
 *.pu
 

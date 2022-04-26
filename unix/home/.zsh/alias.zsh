@@ -7,10 +7,13 @@ alias less="less -R"
 
 function cd {
   builtin cd "$@"
-  if [[ $OLDPWD != $PWD ]]
-  then
+  if [[ $OLDPWD != $PWD ]]; then
     BACK_HISTORY=$OLDPWD:$BACK_HISTORY
     FORWARD_HISTORY=""
+  fi
+
+  if [[ -f ./utils.zsh ]]; then
+    source ./utils.zsh
   fi
 }
 
@@ -25,6 +28,7 @@ function bd {
     BACK_HISTORY=${BACK_HISTORY#*:}
     FORWARD_HISTORY=$PWD:$FORWARD_HISTORY
     builtin cd "$DIR"
+    echo "bd: ${#BACK_HISTORY//[^:]}, fd: ${#FORWARD_HISTORY//[^:]}"
   else
     echo "empty \$BACK_HISTORY"
     return 1
@@ -38,6 +42,7 @@ function fd {
     FORWARD_HISTORY=${FORWARD_HISTORY#*:}
     BACK_HISTORY=$PWD:$BACK_HISTORY
     builtin cd "$DIR"
+    echo "bd: ${#BACK_HISTORY//[^:]}, fd: ${#FORWARD_HISTORY//[^:]}"
   else
     echo "empty \$FORWARD_HISTORY"
     return 1

@@ -1,8 +1,7 @@
 alias ls='gls --color'
 alias ll='gls -lh --color'
 alias la='gls -lah --color'
-
-alias rm="trash"
+alias pbcopy='ruby -e "print(\$stdin.read.chomp)" | pbcopy'
 
 path=(
   /opt/homebrew/bin(N-/)
@@ -14,6 +13,7 @@ path=(
   /usr/local/opt/libpq/bin(N-/)
   $HOME/.pyenv/shims(N-/)
   $HOME/.rbenv/bin(N-/)
+  $HOME/go/bin/(N-/)
   $path
 )
 
@@ -23,6 +23,10 @@ fi
 
 if command -v rbenv 1>/dev/null 2>&1; then
   eval "$(rbenv init -)"
+fi
+
+if command -v nodenv 1>/dev/null 2>&1; then
+  eval "$(nodenv init -)"
 fi
 
 alias brew="arch -arch x86_64 env PATH=${${PATH/$HOME\/\.pyenv\/shims:/}/\/opt\/homebrew\/bin:/} /usr/local/bin/brew"

@@ -5,6 +5,17 @@ alias docker-compose-dev='docker-compose -f docker-compose.dev.yml'
 alias tree="tree -N"
 alias less="less -R"
 
+function esed {
+  local -A opthash
+  zparseopts -D -A opthash -- i
+
+  if [[ -n "${opthash[(i)-i]}" ]]; then
+    perl -i -pe "$@"
+  else
+    perl -pe "$@"
+  fi
+}
+
 function cd {
   builtin cd "$@"
   if [[ $OLDPWD != $PWD ]]; then

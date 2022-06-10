@@ -15,6 +15,7 @@ Procfile
 node_modules
 
 *.pu
+*.pdf
 
 trash
 

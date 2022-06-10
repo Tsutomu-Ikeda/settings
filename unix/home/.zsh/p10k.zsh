@@ -10,7 +10,7 @@ function prompt_shorter_context() {
 }
 
 function prompt_zsh_version() {
-    p10k segment -f 013 -t "zsh:$(zsh --version | cut -d" " -f2)"
+    p10k segment -f 013 -t "zsh:$(eval "$(ps -p $$ | grep zsh | awk '{print $4}' | tr -d '-') --version" | awk '{print $2}')"
 }
 
 typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(

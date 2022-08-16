@@ -50,7 +50,16 @@
     ```bash
     brew install --cask docker
     ```
-  - キーバインドの変更
+  - Zoomのインストール
+    ```bash
+    brew install --cask zoom
+    ```
+    - オーディオ
+      - 「ミーティングへの接続時に、自動的にコンピュータオーディオに接続」 ✅
+      - 「ミーティングの参加時にマイクをミュートに設定」✅
+    - 画面の共有
+      - 「画面を共有している場合のウィンドウサイズ」 現在のサイズを保持する
+  - Karabiner Elementsのインストール
     ```bash
     brew install karabiner-elements
     ```
@@ -138,6 +147,13 @@ sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Aut
 defaults write -g com.apple.keyboard.fnState -int 1
 defaults write -g NSAutomaticPeriodSubstitutionEnabled -int 0
 defaults write -g NSAutomaticCapitalizationEnabled -int 0
+```
+
+- `入力ソース > 日本語 - ローマ字入力 > 数字を全角入力` のチェックを外す
+
+```
+defaults write com.apple.inputmethod.Kotoeri JIMPrefFullWidthNumeralCharactersKey -float 0
+killall -HUP JapaneseIM-RomajiTyping
 ```
 
 ### スクショの設定

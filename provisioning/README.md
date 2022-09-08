@@ -26,6 +26,10 @@
     git config --global pull.rebase false
     git config --global user.name "tomtsutom"
     git config --global user.email "40418321+Tsutomu-Ikeda@users.noreply.github.com"
+
+    # 自動的に上流ブランチをセットしてくれるオプション
+    # 新しいブランチを作成するたびに `git push --set-upstream origin HEAD` する必要がなくなる
+    git config --global --add --bool push.autoSetupRemote true
     ```
 - 必要なアプリケーションのインストール
   - 以下の項目を一括でインストールする場合

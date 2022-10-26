@@ -1,16 +1,19 @@
-﻿#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
+
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 #HotkeyModifierTimeout 100
 
-; 別途Change KeyでCapsLockをF24キー(スキャンコード: 0x0076)に割り当てる
+; 別途Change KeyでCapsLock, 右ShiftキーをF24キー(スキャンコード: 0x0076), WinキーをF23キー(スキャンコード: 0x006e)に割り当てる
 ; https://forest.watch.impress.co.jp/library/software/changekey/
+
 
 GroupAdd Dev, ahk_class CASCADIA_HOSTING_WINDOW_CLASS ; Windows Terminal
 GroupAdd Dev, ahk_exe Code.exe ; Visual Studio Code
 
 ; Emacsライクな部分
+
 F24 & a::
     IfWinActive ahk_class CASCADIA_HOSTING_WINDOW_CLASS
         Send, ^a
@@ -25,7 +28,7 @@ F24 & u::
     Return
 F24 & w::
     IfWinActive ahk_group Dev
-        Send, ^w
+        Send, {Blind}!{BS}
     Else
         Send, {Blind}^{BS}
     Return
@@ -35,19 +38,29 @@ F24 & e::
     Else
         Send, {Blind}{End}
     Return
+F24 & `::
+  if GetKeyState("Shift") {
+    Send, ^+`
+    return
+  }
+  Send, ^`
+  return
 
 ; Vimライクな部分
+
 F24 & h::Send, {Blind}{Left}
 F24 & j::Send, {Blind}{Down}
 F24 & k::Send, {Blind}{Up}
 F24 & l::Send, {Blind}{Right}
 
 ; 個人的な設定
+
 F24 & `;::Send, {Blind}{Enter}
 F24 & /::Send, {Blind}{BS}
 F24 & [::Send, {Blind}{Esc}
 
 ; その他のキー
+
 F24 & b::Send, ^b
 F24 & c::Send, ^c
 F24 & d::Send, ^d
@@ -138,6 +151,7 @@ IME_SET(SetSts, WinTitle="A")
 }
 
 ; 単押しのときはアルファベット/日本語切り替えとして動かす
+
 F24 up::
     if (IME_GET()) {
         if (IME_GetConverting() >= 1) {
@@ -147,4 +161,206 @@ F24 up::
     } else {
         IME_SET(1)
     }
-Return
+return
+
+
+F23 & a::
+  if GetKeyState("Shift") {
+    Send ^+a
+    return
+  }
+  Send, ^a
+  return
+F23 & b::
+  if GetKeyState("Shift") {
+    Send ^+b
+    return
+  }
+  Send, ^b
+  return
+F23 & c::
+  if GetKeyState("Shift") {
+    Send ^+c
+    return
+  }
+  Send, ^c
+  return
+F23 & d::
+  if GetKeyState("Shift") {
+    Send ^+d
+    return
+  }
+  Send, ^d
+  return
+F23 & e::
+  if GetKeyState("Shift") {
+    Send ^+e
+    return
+  }
+  Send, ^e
+  return
+F23 & f::
+  if GetKeyState("Shift") {
+    Send ^+f
+    return
+  }
+  Send, ^f
+  return
+F23 & g::
+  if GetKeyState("Shift") {
+    Send ^+g
+    return
+  }
+  Send, ^g
+  return
+F23 & h::
+  if GetKeyState("Shift") {
+    Send ^+h
+    return
+  }
+  Send, ^h
+  return
+F23 & i::
+  if GetKeyState("Shift") {
+    Send ^+i
+    return
+  }
+  Send, ^i
+  return
+F23 & j::
+  if GetKeyState("Shift") {
+    Send ^+j
+    return
+  }
+  Send, ^j
+  return
+F23 & k::
+  if GetKeyState("Shift") {
+    Send ^+k
+    return
+  }
+  Send, ^k
+  return
+F23 & l::
+  if GetKeyState("Shift") {
+    Send ^+l
+    return
+  }
+  Send, ^l
+  return
+F23 & m::
+  if GetKeyState("Shift") {
+    Send ^+m
+    return
+  }
+  Send, ^m
+  return
+F23 & n::
+  if GetKeyState("Shift") {
+    Send ^+n
+    return
+  }
+  Send, ^n
+  return
+F23 & o::
+  if GetKeyState("Shift") {
+    Send ^+o
+    return
+  }
+  Reload
+  return
+F23 & p::
+  if GetKeyState("Shift") {
+    Send ^+p
+    return
+  }
+  Send, ^p
+  return
+F23 & q::
+  if GetKeyState("Shift") {
+    Send ^+q
+    return
+  }
+  Send, ^q
+  return
+F23 & r::
+  if GetKeyState("Shift") {
+    Send ^+r
+    return
+  }
+  Send, ^r
+  return
+F23 & s::
+  if GetKeyState("Shift") {
+    Send ^+s
+    return
+  }
+  Send, ^s
+  return
+F23 & t::
+  if GetKeyState("Shift") {
+    Send ^+t
+    return
+  }
+  Send, ^t
+  return
+F23 & u::
+  if GetKeyState("Shift") {
+    Send ^+u
+    return
+  }
+  Send, ^u
+  return
+F23 & v::
+  if GetKeyState("Shift") {
+    Send ^+v
+    return
+  }
+  Send, ^v
+  return
+F23 & w::
+  if GetKeyState("Shift") {
+    Send ^+w
+    return
+  }
+  Send, ^w
+  return
+F23 & x::
+  if GetKeyState("Shift") {
+    Send ^+x
+    return
+  }
+  Send, ^x
+  return
+F23 & y::
+  if GetKeyState("Shift") {
+    Send ^+y
+    return
+  }
+  Send, ^y
+  return
+F23 & z::
+  if GetKeyState("Shift") {
+    Send ^+z
+    return
+  }
+  Send, ^z
+  return
+
+
+F23 & Tab::Send, {Blind}^{Tab}
+
+F23 & Enter::Send, {Blind}^{Enter}
+
+F23 & 1::Send, #1
+F23 & 2::Send, #2
+F23 & 3::Send, #3
+F23 & 4::Send, #4
+F23 & 5::Send, #5
+F23 & 6::Send, #6
+F23 & 7::Send, #7
+F23 & 8::Send, #8
+F23 & 9::Send, #9
+F23 & Space::Send, #{Space}
+
+F23 up::Send, {Blind}{LWin}

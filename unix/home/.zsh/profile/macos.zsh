@@ -30,3 +30,21 @@ if command -v nodenv 1>/dev/null 2>&1; then
 fi
 
 alias brew="arch -arch x86_64 env PATH=${${PATH/$HOME\/\.pyenv\/shims:/}/\/opt\/homebrew\/bin:/} /usr/local/bin/brew"
+
+function pbcotee() {
+  pbcopy && pbpaste
+}
+
+function aws-local {
+  local cmd=$1
+
+  if [ "$cmd" = "s3" -o "$cmd" = "s3api" ]; then
+    AWS_ACCESS_KEY_ID=hogehoge AWS_SECRET_ACCESS_KEY=fugafuga aws --endpoint-url=http://localhost:9000 "$@"
+  elif [ "$cmd" = "stepfunctions" ]; then
+    aws --endpoint-url=http://localhost:8083/ "$@"
+  elif [ "$cmd" = "glue" -o "$cmd" = "ecs" -o "$cmd" = "events" ]; then
+    aws --endpoint-url=http://localhost:9999/$cmd/ "$@"
+  else
+    aws --endpoint-url=http://localhost:4566/ --profile localstack "$@"
+  fi
+}

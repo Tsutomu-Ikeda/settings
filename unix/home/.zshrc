@@ -38,10 +38,12 @@ path=(
 )
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ./utils.zsh ]] && source ./utils.zsh
 
 source $HOME/.zsh/color.zsh
 source $HOME/.zsh/alias.zsh
 source $HOME/.zsh/util.zsh
+source $HOME/settings/set_environment_variables.sh
 
 #-----------------------
 # Misc Settings
@@ -108,7 +110,7 @@ setopt nonomatch
 cdpath=(
   $HOME(N-/)
   $HOME/Documents(N-/)
-  $HOME/Documents/cl2(N-/)
+  $HOME/Development/jingu(N-/)
   $HOME/Development(N-/)
   $cdpath
 )

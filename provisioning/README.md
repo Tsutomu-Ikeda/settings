@@ -6,6 +6,12 @@
   ```bash
   xcode-select --install
   ```
+- (M1 Macの場合) Rosetta2をインストールする
+  ```bash
+
+  softwareupdate --install-rosetta
+  ```
+- rbenvのインストール
 - [Homebrew](https://brew.sh/)のインストール
   ```bash
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -54,20 +60,51 @@
     ```bash
     brew install --cask docker
     ```
+  - MeetingBarのインストール
+    ```bash
+    brew install --cask meetingbar
+    ```
+  - 1Passwordのインストール
+    ```bash
+    brew install --cask 1password
+    ```
+  - Alfredのインストール
+    ```bash
+    brew install --cask alfred
+    ```
+    SpotLight無効化
   - Zoomのインストール
     ```bash
     brew install --cask zoom
     ```
+    - 一般
+      - 「ZoomをmacOSメニューバーに追加」チェックを外す☑️
     - オーディオ
-      - 「ミーティングへの接続時に、自動的にコンピュータオーディオに接続」 ✅
-      - 「ミーティングの参加時にマイクをミュートに設定」✅
+      - 「ミーティングへの接続時に、自動的にコンピュータオーディオに接続」チェックをつける ✅
+      - 「ミーティングの参加時にマイクをミュートに設定」チェックをつける✅
     - 画面の共有
       - 「画面を共有している場合のウィンドウサイズ」 現在のサイズを保持する
+    - 権限の設定画面共有
+      - ホーム画面から「画面の共有」を押して設定を開く
   - Karabiner Elementsのインストール
     ```bash
     brew install karabiner-elements
     ```
     Catalina 以降の MacOSではKarabiner Elementsに `Full Disk Access` を与える必要があります。
+  - RunCat
+    ```bash
+    mas install 1429033973
+    ```
+  - BetterSnapTool
+    ```bash
+    mas install 417375580
+    ```
+  - Fuwari
+    ```bash
+    mas install 1187652334
+    ```
+  - MonitorControl
+    https://github.com/MonitorControl/MonitorControl/releases
 - pyenvでPythonインタプリタをインストールする
   ```bash
   export CFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include"
@@ -86,6 +123,24 @@
   - バックスラッシュがうまく表示されない問題
   - なぜRicty Diminishedを使うか
     - 全角スペースと半角スペースの区別がつく
+
+### デフォルトのブラウザの設定
+
+```bash
+open -a "Google Chrome" --args --make-default-browser
+```
+
+### テーマをダークテーマにする
+
+```
+sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark
+killall Dock
+killall SystemUIServer
+```
+
+### 指紋認証の設定
+
+自動化できなさそう
 
 ### AppleIDの設定
 
@@ -131,6 +186,14 @@ defaults write com.apple.dock mru-spaces -bool false
 killall Dock
 ```
 
+自動で隠す
+
+```bash
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 0
+killall Dock
+```
+
 ### 音の設定
 
 - `Sound > Play user interface sound effects` のチェックを外す
@@ -167,6 +230,13 @@ defaults write com.apple.screencapture disable-shadow -boolean true  # ウィン
 defaults write com.apple.screencapture type jpg  # JPEG形式にする
 defaults write com.apple.screencapture target clipboard  # 保存先をクリップボードにする
 killall SystemUIServer
+```
+
+### .DS_Storeを作らないようにする
+
+```bash
+defaults write com.apple.desktopservices DSDontWriteNetworkStores True
+killall Finder
 ```
 
 ## Windows

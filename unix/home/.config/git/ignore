@@ -27,3 +27,16 @@ spec/fixtures/*.csv
 set_environment_variables.sh
 
 worktree_*/
+
+.mypy_cache/
+__pycache__/
+
+.clasprc.json
+
+inspection-scripts/
+
+tools/create_pdf/*.csv
+
+.scalarDiagnostics
+
+set_environment_variables.sh

@@ -62,5 +62,5 @@ function fd {
 
 function mp4nize {
   local target_file="$(ls ~/Desktop/*.mov | sort | head -n1)"
-  ffmpeg -i "$target_file" "$1" && rm "$target_file"
+  ffmpeg -i "$target_file" -an "$1" && rm "$target_file"
 }

@@ -91,6 +91,10 @@
     brew install karabiner-elements
     ```
     Catalina 以降の MacOSではKarabiner Elementsに `Full Disk Access` を与える必要があります。
+  - Tunnelblick
+    ```bash
+    brew install --cask tunnelblick
+    ```
   - RunCat
     ```bash
     mas install 1429033973

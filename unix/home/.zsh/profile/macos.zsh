@@ -36,7 +36,7 @@ if command -v nodenv 1>/dev/null 2>&1; then
   eval "$(nodenv init -)"
 fi
 
-alias brew="arch -arch x86_64 env PATH=${${PATH/$HOME\/\.pyenv\/shims:/}/\/opt\/homebrew\/bin:/} /usr/local/bin/brew"
+# alias brew="arch -arch x86_64 env PATH=${${PATH/$HOME\/\.pyenv\/shims:/}/\/opt\/homebrew\/bin:/} /usr/local/bin/brew"
 alias copy_current_branch="git rev-parse --abbrev-ref HEAD | pbcotee"
 
 function pbcotee() {

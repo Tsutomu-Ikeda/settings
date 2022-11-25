@@ -11,7 +11,6 @@
 
   softwareupdate --install-rosetta
   ```
-- rbenvのインストール
 - [Homebrew](https://brew.sh/)のインストール
   ```bash
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -37,10 +36,31 @@
     # 新しいブランチを作成するたびに `git push --set-upstream origin HEAD` する必要がなくなる
     git config --global --add --bool push.autoSetupRemote true
     ```
+- 設定の反映
+  ```bash
+  cd ~
+  git clone git@github.com:Tsutomu-Ikeda/settings
+  cd settings/unix/setup
+  brew install coreutils  # glsを入れるため
+  make install
+  ```
+- [pyenv](https://github.com/pyenv/pyenv), [rbenv](https://github.com/rbenv/rbenv), [nodenv](https://github.com/nodenv/nodenv)のインストール
+  ```bash
+  brew install pyenv rbenv nodenv
+  # 最新の安定版をインストールする
+  pyenv install $(pyenv install --list | grep -E '^ *3\.\d+\.\d+$' | tail -n1) && pyenv global $(pyenv versions | grep -v '*' | tail -n1)
+  rbenv install $(rbenv install --list | grep -E '^ *3\.\d+\.\d+$' | tail -n1) && rbenv global $(rbenv versions | grep -v '*' | tail -n1)
+  nodenv install $(nodenv install --list | grep -E '^ *\d[02468]\.\d+\.\d+$' | tail -n1) && nodenv global $(nodenv versions | grep -v '*' | tail -n1)
+  ```
+- gitのエイリアス設定
+  - git-browse-remoteのインストール
+    ```bash
+    gem install git-browse-remote
+    git config --global alias.open browse-remote
+    ```
 - 必要なアプリケーションのインストール
   - 以下の項目を一括でインストールする場合
     ```bash
-    git clone git@github.com:Tsutomu-Ikeda/settings
     cd settings/unix/homebrew
     brew bundle
     ```

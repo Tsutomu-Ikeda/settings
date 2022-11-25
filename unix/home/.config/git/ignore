@@ -38,5 +38,3 @@ inspection-scripts/
 tools/create_pdf/*.csv
 
 .scalarDiagnostics
-
-set_environment_variables.sh

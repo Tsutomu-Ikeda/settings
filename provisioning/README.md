@@ -105,22 +105,25 @@
     ```
   - MonitorControl
     https://github.com/MonitorControl/MonitorControl/releases
-- pyenvでPythonインタプリタをインストールする
-  ```bash
-  export CFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include"
-  export LDFLAGS="-L$(brew --prefix zlib)/lib -L$(brew --prefix openssl)/lib -L$(brew --prefix bzip2)/lib -L$(brew --prefix readline)/lib"
-  arch -arch x86_64 env PATH=${PATH/\/opt\/homebrew\/bin:/} pyenv install 3.8.7
-  pyenv global 3.8.7
-  ```
-- シェル設定などの読み込み
-  ```bash
-  # git clone git@github.com:Tsutomu-Ikeda/settings
-  cd settings/unix/setup
-  brew install coreutils  # glsを入れるため
-  make install
-  ```
 - Ricty Diminishedの設定
   - バックスラッシュがうまく表示されない問題
+    - https://qiita.com/uKLEina/items/ff0877871fc425952b92#comment-74375ba083e256f6c787
+    ```bash
+    # brew install fontforge
+    cat <<EOFF > modify_ricty_script
+    #!/usr/bin/env fontforge
+
+    Open(\$1)
+    Select(0u0060)
+    SetGlyphClass("base")
+    Generate(\$1)
+    EOFF
+
+    chmod a+x modify_ricty_script
+
+    find ~/Library/Fonts/RictyDiminished*.ttf | xargs -I {} fontforge -lang ff -script modify_ricty_script {}
+    rm modify_ricty_script
+    ```
   - なぜRicty Diminishedを使うか
     - 全角スペースと半角スペースの区別がつく
 

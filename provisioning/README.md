@@ -108,7 +108,12 @@
     mas install 1187652334
     ```
   - MonitorControl
-    https://github.com/MonitorControl/MonitorControl/releases
+    ```bash
+    brew install --cask monitorcontrol
+    ```
+    ![](../assets/images/provisioning/monitor_control_general.png)
+    ![](../assets/images/provisioning/monitor_control_app_menu.png)
+    ![](../assets/images/provisioning/monitor_control_keyboard.png)
 - Ricty Diminishedの設定
   - バックスラッシュがうまく表示されない問題
     - https://qiita.com/uKLEina/items/ff0877871fc425952b92#comment-74375ba083e256f6c787

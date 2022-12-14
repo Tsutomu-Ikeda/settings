@@ -1,0 +1,13 @@
+[pull]
+	rebase = false
+[user]
+	name = Tsutomu-Ikeda
+	email = 40418321+Tsutomu-Ikeda@users.noreply.github.com
+[push]
+	autoSetupRemote = true
+[alias]
+	open = browse-remote
+  force-pull = !git stash && git pull --rebase && (git stash pop || :)
+  approve-current-branch = !gh pr review $(git rev-parse --abbrev-ref HEAD) --comment -b "$1"
+[init]
+	defaultBranch = main

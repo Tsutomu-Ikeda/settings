@@ -89,7 +89,16 @@ _clean() {
     done
 
     echo "$_TASK Removing fzf"
-    rm -rf "$HOME/.fzf"
+
+    if [[ -d ~/.fzf.zsh ]]; then
+        if [[ -d ~/.fzf ]]; then
+            ~/.fzf/uninstall
+            rm -rf "$HOME/.fzf"
+        elif command -v brew 1>/dev/null 2>&1; then
+            $(brew --prefix)/opt/fzf/uninstall
+            brew uninstall fzf
+        fi
+    fi
 
     echo "$_TASK Removing Antigen"
     rm -rf "$HOME/.antigen"

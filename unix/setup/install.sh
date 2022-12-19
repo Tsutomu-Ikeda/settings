@@ -9,9 +9,16 @@ _WARN=$(printf "\e[1;33m!!\e[m")
 _ERROR=$(printf "\e[1;31m!!\e[m")
 
 echo "$_TASK Setup fzf..."
-if [ ! -d ~/.fzf ]; then
-    git clone https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --all --no-bash --no-fish
+if [[ ! -d ~/.fzf.zsh ]]; then
+    if command -v brew 1>/dev/null 2>&1; then
+        brew install fzf
+        $(brew --prefix)/opt/fzf/install --all --no-bash --no-fish
+        perl -i -p -e "s/fc -rl 1/fc -rli 1/g" $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+    else
+        git clone https://github.com/junegunn/fzf.git ~/.fzf
+        ~/.fzf/install --all --no-bash --no-fish
+        perl -i -p -e "s/fc -rl 1/fc -rli 1/g" ~/.fzf/shell/key-bindings.zsh
+    fi
 fi
 
 echo "$_TASK Setup Antigen..."

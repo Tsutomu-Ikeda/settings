@@ -37,7 +37,7 @@ path=(
   $path
 )
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 [[ -f ./utils.zsh ]] && source ./utils.zsh
 
 source $HOME/.zsh/color.zsh

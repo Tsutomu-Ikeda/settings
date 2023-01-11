@@ -32,9 +32,22 @@
     git config --global user.name "tomtsutom"
     git config --global user.email "40418321+Tsutomu-Ikeda@users.noreply.github.com"
 
+    # エイリアスの設定
+    git config --global alias.force-pull '!git stash && git pull --rebase && (git stash pop || :)'
+    git config --global alias.copy-current-branch-name '!git branch --show-current | tr -d "\n" | pbcopy && pbpaste'
+    git config --global alias.approve-pr '!bash -c '\''echo "$0" | gh pr review --approve --body-file -'\'' -'
+    git config --global alias.approve-pr-with-cat '!bash -c '\''echo "$1<br> [![LGTMeow]("'\''$(shuf -n1 ~/.config/git/lgtmeow.txt)'\''")](https://lgtmeow.com)" | gh pr review --approve --body-file -'\'' -'
+    git config --global alias.delete-merged-branches '!git branch --merged | egrep -v '\''\*|(^ *(develop|main|master)$)|\+'\'' | xargs git branch -d'
+    git config --global alias.delete-remote-deleted-branches '!git fetch --prune 2>&1 | tee | egrep "^ .+deleted" | perl -pe "s: - .deleted. *.none. *-> origin/::g" | (xargs git branch -D  2>&1 || :) | perl -pe "s/^error: (branch .+ not found\.)$/warning: \1/g"'
+    git config --global alias.parent '!git show-branch | grep "*[^[]\+\[" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'\''[]~^[]'\'' "{print \$2}"'
+
+    git config --global init.defaultBranch main
+
     # 自動的に上流ブランチをセットしてくれるオプション
     # 新しいブランチを作成するたびに `git push --set-upstream origin HEAD` する必要がなくなる
     git config --global --add --bool push.autoSetupRemote true
+
+    git config --global push.useForceIfIncludes yes
     ```
 - 設定の反映
   ```bash
@@ -57,6 +70,8 @@
     ```bash
     gem install git-browse-remote
     git config --global alias.open browse-remote
+
+    git open --init
     ```
 - 必要なアプリケーションのインストール
   - 以下の項目を一括でインストールする場合

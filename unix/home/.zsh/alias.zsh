@@ -64,3 +64,25 @@ function mp4nize {
   local target_file="$(ls ~/Desktop/*.mov | sort | head -n1)"
   ffmpeg -i "$target_file" -an "$1" && rm "$target_file"
 }
+
+function git {
+  if [[ "$1" == "push" ]]; then
+    if [[ "$@" == "push" ]]; then
+      command git push
+    elif [[ "$2" == "-f" ]] || [[ "$2" = "--force" ]]; then
+      command git push --force-with-lease --force-if-includes
+    elif [[ "$@" == "push -u origin HEAD" ]]; then
+      command git push -u origin HEAD
+    else
+      echo "invalid push option, nothing to do."
+      return 1
+    fi
+  elif [[ "$1" == "switch" ]]; then
+    if [[ "$2" == "-c" ]] && [[ -z "$4" ]]; then
+      echo "please specify base branch"
+      return 1
+    fi
+  else
+    command git "$@"
+  fi
+}

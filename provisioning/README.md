@@ -286,6 +286,16 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores True
 killall Finder
 ```
 
+### 辞書を調べるショートカットキー「Control + Command + D」を無効にする
+
+```bash
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 70 '<dict><key>enabled</key><false/></dict>'
+```
+
+参考: https://apple.stackexchange.com/questions/22785/how-do-i-disable-the-command-control-d-word-definition-keyboard-shortcut-in-os-x
+
+コマンドを実行後再起動する
+
 ## Windows
 
 - WSL(Ubuntu)のセットアップ

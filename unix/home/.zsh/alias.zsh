@@ -81,6 +81,9 @@ function git {
     if [[ "$2" == "-c" ]] && [[ -z "$4" ]]; then
       echo "please specify base branch"
       return 1
+    elif [[ "$4" == origin/* ]]; then
+      echo "do not specify remote branch for base branch"
+      return 1
     else
       command git "$@"
     fi

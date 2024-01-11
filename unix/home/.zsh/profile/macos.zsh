@@ -5,6 +5,8 @@ if command -v brew 1>/dev/null 2>&1; then
   export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 fi
 
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
+
 alias ls='gls --color'
 alias ll='gls -lh --color'
 alias la='gls -lah --color'
@@ -15,11 +17,13 @@ path=(
   /opt/homebrew/sbin(N-/)
   /opt/homebrew/opt/mysql-client/bin(N-/)
   /opt/homebrew/opt/libpq/bin(N-/)
+  /opt/homebrew/opt/icu4c/bin(N-/)
   /usr/local/sbin(N-/)
   /usr/local/opt/mysql-client/bin(N-/)
   /usr/local/opt/libpq/bin(N-/)
   $HOME/.pyenv/shims(N-/)
   $HOME/.rbenv/bin(N-/)
+  $HOME/.rd/bin(N-/)
   $HOME/go/bin/(N-/)
   $path
 )
@@ -37,7 +41,6 @@ if command -v nodenv 1>/dev/null 2>&1; then
 fi
 
 # alias brew="arch -arch x86_64 env PATH=${${PATH/$HOME\/\.pyenv\/shims:/}/\/opt\/homebrew\/bin:/} /usr/local/bin/brew"
-alias copy_current_branch="git rev-parse --abbrev-ref HEAD | pbcotee"
 
 function pbcotee() {
   pbcopy && pbpaste
@@ -56,3 +59,6 @@ function aws-local {
     aws --endpoint-url=http://localhost:4566/ --profile localstack "$@"
   fi
 }
+
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"

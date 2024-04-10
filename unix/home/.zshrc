@@ -43,7 +43,7 @@ path=(
 source $HOME/.zsh/color.zsh
 source $HOME/.zsh/alias.zsh
 source $HOME/.zsh/util.zsh
-source $HOME/settings/set_environment_variables.sh
+[[ -f "$HOME/settings/set_environment_variables.sh" ]] && source "$HOME/settings/set_environment_variables.sh"
 
 #-----------------------
 # Misc Settings

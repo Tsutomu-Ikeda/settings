@@ -66,6 +66,10 @@ function mp4nize {
 }
 
 function git {
+  if command -v check-ssh-agent-key 1>/dev/null 2>&1; then
+    check-ssh-agent-key
+  fi
+
   if [[ "$1" == "push" ]]; then
     if [[ "$@" == "push" ]]; then
       command git push

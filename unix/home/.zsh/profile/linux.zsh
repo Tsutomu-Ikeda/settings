@@ -2,6 +2,18 @@ alias ls='ls --color'
 alias ll='ls -lh --color'
 alias la='ls -lah --color'
 
+export PYENV_ROOT="$HOME/.pyenv"
+
+path=(
+  $HOME/.local/bin(N-/)
+  $PYENV_ROOT/bin(N-/)
+  $path
+)
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 SSH_AGENT_FILE=$HOME/.ssh-agent
 test -f $SSH_AGENT_FILE && source $SSH_AGENT_FILE
 

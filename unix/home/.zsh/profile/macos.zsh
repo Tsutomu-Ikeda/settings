@@ -66,3 +66,41 @@ function aws-local {
 if [ -f "$HOME/.rye/env" ]; then
   source "$HOME/.rye/env"
 fi
+
+NOTIFY_COMMAND_COMPLETE_TIMEOUT=5
+ENTER_WAIT_TIMEOUT=3
+
+function preexec() {
+  cmd_start=$SECONDS
+}
+
+function wait_for_enter() {
+  local timeout=$1
+  local key
+  # タイムアウトつきで入力待機
+  read -t $timeout -k 1 key 2>/dev/null
+  local result=$?
+  return $result
+}
+
+function precmd() {
+  if [ $cmd_start ]; then
+    cmd_end=$SECONDS
+    elapsed=$((cmd_end - cmd_start))
+    if [ $elapsed -gt $NOTIFY_COMMAND_COMPLETE_TIMEOUT ]; then
+      echo "Command completed in $elapsed seconds."
+      echo -n "Press Enter to continue..."
+      wait_for_enter $ENTER_WAIT_TIMEOUT
+      wait_result=$?
+      echo -en "\r\033[K"
+
+      if [ $wait_result -eq 1 ]; then
+        alert_file=$(shuf -n1 ~/.config/git/alert_sounds.txt)
+        echo "playing $alert_file"
+        afplay -v 0.08 $alert_file
+      fi
+    fi
+    unset cmd_start
+  fi
+}
+

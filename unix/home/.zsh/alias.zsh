@@ -72,6 +72,17 @@ function git {
 
   if [[ "$1" == "push" ]]; then
     if [[ "$@" == "push" ]]; then
+      base="develop"
+      if command git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
+        base="@{u}"
+      fi
+
+      if command git log --oneline "$base..HEAD" | grep -q -i "don't push"; then
+        echo "Found 'don't push' in commit messages. Aborting push."
+        command git log --oneline "$base..HEAD" | grep -i "don't push"
+        return 1
+      fi
+
       command git push
     elif [[ "$2" == "-f" ]] || [[ "$2" = "--force" ]]; then
       command git push --force-with-lease --force-if-includes

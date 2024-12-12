@@ -72,7 +72,7 @@ function git {
 
   if [[ "$1" == "push" ]]; then
     if [[ "$@" == "push" ]]; then
-      base="develop"
+      base="origin/HEAD"
       if command git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
         base="@{u}"
       fi

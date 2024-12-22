@@ -60,6 +60,27 @@ function fd {
   fi
 }
 
+function code() {
+  if [ $# -ne 1 ]; then
+    command code "$@"
+    return
+  fi
+
+  target="$1"
+
+  if [ -f "./$target" ] || [ -d "./$target" ]; then
+    command code "./$target"
+    return
+  fi
+
+  if (cd "$target" && command code .); then
+    return
+  fi
+
+  echo "Error: '$target' is not found in current directory nor accessible via CDPATH."
+  return 1
+}
+
 function mp4nize {
   local target_file="$(ls ~/Desktop/*.mov | sort | head -n1)"
   ffmpeg -i "$target_file" -an "$1" && rm "$target_file"

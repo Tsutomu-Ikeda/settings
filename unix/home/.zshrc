@@ -110,7 +110,6 @@ setopt nonomatch
 cdpath=(
   $HOME(N-/)
   $HOME/Documents(N-/)
-  $HOME/Development/jingu(N-/)
   $HOME/Development(N-/)
   $cdpath
 )

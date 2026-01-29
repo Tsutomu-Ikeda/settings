@@ -324,6 +324,10 @@ defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool fa
 
 https://mail.google.com/mail/u/0/#search/Monokai+Pro+is%3Astarred
 
+### Alfred Power Packのライセンスを入力する
+
+https://mail.google.com/mail/u/0/#search/Alfred++5+Powerpack+is%3Astarred
+
 コマンドを実行後再起動する
 
 ## Windows

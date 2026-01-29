@@ -320,6 +320,10 @@ killall -HUP JapaneseIM-RomajiTyping
 defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false && killall WindowManager
 ```
 
+### monokaiのライセンスを入力する
+
+https://mail.google.com/mail/u/0/#search/Monokai+Pro+is%3Astarred
+
 コマンドを実行後再起動する
 
 ## Windows

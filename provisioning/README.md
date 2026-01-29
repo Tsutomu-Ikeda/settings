@@ -152,27 +152,12 @@
     ![](../assets/images/provisioning/monitor_control_general.png)
     ![](../assets/images/provisioning/monitor_control_app_menu.png)
     ![](../assets/images/provisioning/monitor_control_keyboard.png)
-- Ricty Diminishedの設定
-  - バックスラッシュがうまく表示されない問題
-    - https://qiita.com/uKLEina/items/ff0877871fc425952b92#comment-74375ba083e256f6c787
-    ```bash
-    # brew install fontforge
-    cat <<EOFF > modify_ricty_script
-    #!/usr/bin/env fontforge
-
-    Open(\$1)
-    Select(0u0060)
-    SetGlyphClass("base")
-    Generate(\$1)
-    EOFF
-
-    chmod a+x modify_ricty_script
-
-    find ~/Library/Fonts/RictyDiminished*.ttf | xargs -I {} fontforge -lang ff -script modify_ricty_script {}
-    rm modify_ricty_script
-    ```
-  - なぜRicty Diminishedを使うか
+  - なぜInconsolata・PlemolJPを使うか
     - 全角スペースと半角スペースの区別がつく
+    - Ricty Diminishedのセットアップ手順が煩雑
+      - バグがある
+  - brew install --cask font-plemol-jp
+  - brew install --cask font-inconsolata
 
 ### デフォルトのブラウザの設定
 

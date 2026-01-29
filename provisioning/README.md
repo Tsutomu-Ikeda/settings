@@ -295,6 +295,25 @@ defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 70 '<dic
 
 参考: https://apple.stackexchange.com/questions/22785/how-do-i-disable-the-command-control-d-word-definition-keyboard-shortcut-in-os-x
 
+### 日本語のライブ変換を無効化する
+
+![live変換](image.png)
+
+```bash
+defaults write com.apple.inputmethod.Kotoeri JIMPrefLiveConversionKey -bool false
+```
+
+設定が反映されない場合、IMEプロセスを再起動する
+
+```bash
+killall -HUP JapaneseIM-RomajiTyping
+```
+
+参考: https://qiita.com/tomtsutom0122/items/240ad8ee1ff1e0b4b5d8
+
+それでもだめだったらパソコンを再起動する
+
+
 コマンドを実行後再起動する
 
 ## Windows

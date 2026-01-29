@@ -314,6 +314,12 @@ killall -HUP JapaneseIM-RomajiTyping
 それでもだめだったらパソコンを再起動する
 
 
+### 「壁紙をクリックしてデスクトップを表示」を「ステージマネージャ使用時のみ」にする
+
+```bash
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false && killall WindowManager
+```
+
 コマンドを実行後再起動する
 
 ## Windows

@@ -40,6 +40,7 @@
     git config --global alias.delete-merged-branches '!git branch --merged | egrep -v '\''\*|(^ *(develop|main|master)$)|\+'\'' | xargs git branch -d'
     git config --global alias.delete-remote-deleted-branches '!git fetch --prune 2>&1 | tee | egrep "^ .+deleted" | perl -pe "s: - .deleted. *.none. *-> origin/::g" | (xargs git branch -D  2>&1 || :) | perl -pe "s/^error: (branch .+ not found)\.?$/warning: \1/g" | zsh -c "tee >(cat) | perl -nle '\''exit 1 if m/^error:/'\''"'
     git config --global alias.parent '!git show-branch | grep "*[^[]\+\[" | grep -v "$(git rev-parse --abbrev-ref HEAD)" | awk -F'\''[]~^[]'\'' "{print \$2}" | sort | uniq | awk '\''BEGIN {} {for(i=0;i<NF;i++) { branch=$i; if(branch ~ /^develop$/) { d=d""branch"\n" } else if (branch ~ /^epic\//) { e=e""branch"\n" } else { o=o""branch"\n" } } } END {printf d""e""o}'\'' | head -n1'
+    git config --global alias.default-branch '!git symbolic-ref refs/remotes/origin/HEAD | awk -F'\''[/]'\'' '\''{print $NF}'\'''
 
     git config --global init.defaultBranch main
 

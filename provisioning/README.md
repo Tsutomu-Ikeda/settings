@@ -15,17 +15,16 @@
   ```bash
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   ```
-- SSH(Git/GitHub)の設定
-  - [GitHubへ公開鍵を設定](https://github.com/settings/keys)
+- Git/GitHubの認証設定
+  - [GitHub CLI](https://cli.github.com/)のインストール
     ```bash
-    ssh-keygen
-    cat ~/.ssh/id_rsa.pub | pbcopy
-    cat <<EOF >> ~/.ssh/config
-    Host *
-      UseKeyChain yes
-      AddKeysToAgent yes
-    EOF
+    brew install gh
     ```
+  - GitHub CLIでログイン
+    ```bash
+    gh auth login
+    ```
+    プロトコルはHTTPSを選択する
   - Gitの設定
     ```bash
     git config --global pull.rebase false
@@ -53,7 +52,7 @@
 - 設定の反映
   ```bash
   cd ~
-  git clone git@github.com:Tsutomu-Ikeda/settings
+  git clone https://github.com/Tsutomu-Ikeda/settings
   cd settings/unix/setup
   brew install coreutils  # glsを入れるため
   make install
@@ -321,11 +320,15 @@ https://mail.google.com/mail/u/0/#search/Alfred++5+Powerpack+is%3Astarred
 
 - WSL(Ubuntu)のセットアップ
   - Git/GitHubの設定
-    - [GitHubへ公開鍵を設定](https://github.com/settings/keys)
+    - GitHub CLIのインストール
       ```bash
-      ssh-keygen
-      cat ~/.ssh/id_rsa.pub | clip.exe
+      winget install --id GitHub.cli
       ```
+    - GitHub CLIでログイン
+      ```bash
+      gh auth login
+      ```
+      プロトコルはHTTPSを選択する
     - Gitのコミット情報の設定
       ```bash
       git config pull.rebase false
@@ -345,7 +348,7 @@ https://mail.google.com/mail/u/0/#search/Alfred++5+Powerpack+is%3Astarred
   ```bash
   sudo apt-get install zsh
   chsh -s $(which zsh)
-  git clone git@github.com:Tsutomu-Ikeda/settings
+  git clone https://github.com/Tsutomu-Ikeda/settings
   cd settings/unix/setup
   make install
   ```
